@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Impressum — Cornice</title>
+<meta name="description" content="Impressum und rechtliche Angaben zu Cornice.">
+<meta name="theme-color" content="#FAFAFA">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M10 2.5c-3 0-5.5 2.4-5.5 5.5 0 4 5.5 9.5 5.5 9.5s5.5-5.5 5.5-9.5c0-3.1-2.5-5.5-5.5-5.5Z"/>
+        <circle cx="10" cy="8" r="2"/>
+      </svg>
+      Cornice
+    </a>
+    <a class="btn btn-ghost btn-small" href="/">Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <section class="legal">
+    <div class="wrap legal-inner">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäss Art. 3 UWG</h2>
+      <p>
+        [Vor- und Nachname / Firma]<br>
+        [Strasse und Hausnummer]<br>
+        [PLZ und Ort], Schweiz
+      </p>
+      <p>
+        E-Mail: <a href="mailto:lampert.jan@icloud.com">lampert.jan@icloud.com</a>
+      </p>
+
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>
+        Verantwortlich für den Inhalt dieser Website sowie der App Cornice
+        ist die oben genannte Person.
+      </p>
+
+      <h2>Haftungsausschluss</h2>
+      <p>
+        Die Inhalte dieser Website wurden mit grösstmöglicher Sorgfalt
+        erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der
+        Inhalte kann jedoch keine Gewähr übernommen werden. Cornice kuratiert
+        Fahrstrecken; die Nutzung erfolgt auf eigene Verantwortung. Es gelten
+        jederzeit die vor Ort geltenden Verkehrsregeln und Geschwindigkeitsbegrenzungen —
+        Zeiten in der App sind ein Community-Feature und keine Aufforderung zu
+        überhöhter Geschwindigkeit.
+      </p>
+      <p>
+        Für Inhalte externer Links (z. B. Kartenmaterial, Wetterdaten)
+        übernehmen wir keine Haftung; es gilt das Recht des jeweiligen Anbieters.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Design, Texte und Code dieser Website sind urheberrechtlich geschützt.
+        Streckendaten und Inhalte innerhalb der App stammen teilweise von der
+        Nutzer-Community und liegen bei den jeweiligen Urhebern.
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Fragen, Feedback oder Meldungen zu Inhalten:
+        <a href="mailto:lampert.jan@icloud.com">lampert.jan@icloud.com</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M10 2.5c-3 0-5.5 2.4-5.5 5.5 0 4 5.5 9.5 5.5 9.5s5.5-5.5 5.5-9.5c0-3.1-2.5-5.5-5.5-5.5Z"/>
+        <circle cx="10" cy="8" r="2"/>
+      </svg>
+      Cornice
+    </a>
+    <p class="footer-tag">Kuratierte Fahrstrecken für Auto &amp; Motorrad — gestartet in Zürich.</p>
+    <div class="footer-links">
+      <a href="https://cornice-orcin.vercel.app/" rel="noopener">App öffnen</a>
+      <a href="mailto:lampert.jan@icloud.com">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> Cornice.</p>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

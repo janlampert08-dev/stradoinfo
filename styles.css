@@ -160,9 +160,18 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margi
   max-width: 780px;
 }
 
+.eyebrow-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
 .eyebrow {
-  display: inline-block;
-  margin: 0 0 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   border: 1px solid var(--border-strong);
@@ -171,6 +180,29 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margi
   color: var(--muted);
   background: var(--surface);
 }
+
+.eyebrow-ch {
+  color: var(--foreground);
+  border-color: rgba(211, 20, 26, 0.35);
+  background: rgba(211, 20, 26, 0.06);
+}
+
+.ch-cross {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #d3141a;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.ch-cross::before, .ch-cross::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+}
+.ch-cross::before { top: 50%; left: 2.5px; right: 2.5px; height: 2px; transform: translateY(-1px); }
+.ch-cross::after { left: 50%; top: 2.5px; bottom: 2.5px; width: 2px; transform: translateX(-1px); }
 
 .hero h1 {
   font-size: clamp(2.4rem, 5.5vw, 4rem);
@@ -204,7 +236,84 @@ section h2 {
   margin: 0.9rem 0 3rem;
 }
 
+/* ---------- Lokal / Zürich ---------- */
+
+.local { border-top: 1px solid var(--border); }
+
+.local-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .local-inner { grid-template-columns: 1fr; }
+}
+
+.local-points {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.local-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.local-points .dot {
+  margin-top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #d3141a;
+  flex-shrink: 0;
+}
+
+.skyline {
+  width: 100%;
+  height: auto;
+  color: var(--foreground);
+  justify-self: center;
+}
+
+.skyline-water {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.skyline-buildings rect,
+.skyline-buildings path,
+.skyline-buildings circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 /* ---------- Route showcase ---------- */
+
+.grid-label {
+  margin: 0 0 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.grid-label--alt { margin-top: 2.5rem; }
 
 .showcase { border-top: 1px solid var(--border); background: var(--surface); }
 
@@ -334,6 +443,27 @@ section h2 {
 .cta-inner { max-width: 640px; margin: 0 auto; }
 
 .cta p { color: var(--muted); font-size: 1.05rem; margin: 1rem 0 2rem; }
+
+/* ---------- Legal (Impressum) ---------- */
+
+.legal { padding: 4rem 0 5rem; }
+
+.legal-inner { max-width: 680px; }
+
+.legal h1 { font-size: clamp(1.9rem, 4vw, 2.5rem); margin-bottom: 2rem; }
+
+.legal h2 {
+  font-size: 1rem;
+  margin: 2.25rem 0 0.6rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.legal h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+.legal p { color: var(--foreground); font-size: 0.95rem; line-height: 1.7; margin: 0 0 0.5rem; }
+
+.legal a:hover { color: var(--accent); }
 
 /* ---------- Footer ---------- */
 
