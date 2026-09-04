@@ -249,31 +249,6 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; marg
   background: var(--surface);
 }
 
-.eyebrow-ch {
-  color: var(--foreground);
-  border-color: rgba(211, 20, 26, 0.4);
-  background: rgba(211, 20, 26, 0.1);
-}
-
-.ch-cross {
-  position: relative;
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  background: #d3141a;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-.ch-cross::before, .ch-cross::after {
-  content: "";
-  position: absolute;
-  background: #fff;
-}
-.ch-cross::before { top: 50%; left: 2.5px; right: 2.5px; height: 2px; transform: translateY(-1px); }
-.ch-cross::after { left: 50%; top: 2.5px; bottom: 2.5px; width: 2px; transform: translateX(-1px); }
-
-.hero .eyebrow { display: inline-flex; margin-bottom: 1.5rem; }
-
 .hero h1 {
   font-size: clamp(2.6rem, 5.8vw, 4.25rem);
   font-weight: 800;
