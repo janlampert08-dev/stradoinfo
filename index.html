@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cornice — Kuratierte Fahrstrecken für Auto &amp; Motorrad</title>
-<meta name="description" content="Cornice sammelt die schönsten Pässe und Kurvenstrecken — lokal gestartet in der Region Zürich. Strecken entdecken, Zeiten fahren, Bestenlisten erklimmen — kuratiert von Fahrern, für Fahrer.">
-<meta name="theme-color" content="#FAFAFA">
+<meta name="description" content="Cornice: kuratierte Pässe und Kurvenstrecken entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen — inklusive Feed, Höhenprofil, Wetter und Offline-Modus. Kostenlos, lokal gestartet in Zürich.">
+<meta name="theme-color" content="#0B0B0D">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cornice — Kuratierte Fahrstrecken für Auto & Motorrad">
-<meta property="og:description" content="Die schönsten Pässe und Kurvenstrecken — lokal gestartet in Zürich. Entdecken, fahren, vergleichen.">
+<meta property="og:description" content="Strecken entdecken, per GPS aufzeichnen, in Bestenlisten je Fahrzeug vergleichen. Kostenlos, lokal gestartet in Zürich.">
 <meta property="og:url" content="https://cornice.ch">
 <meta property="og:image" content="https://cornice.ch/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,7 +17,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,10 +26,8 @@
   <div class="wrap header-inner">
     <a href="/" class="logo"><span>Cornice</span></a>
     <nav class="site-nav">
-      <a href="#lokal"><span>Region Zürich</span></a>
-      <a href="#strecken"><span>Strecken</span></a>
       <a href="#funktionen"><span>Funktionen</span></a>
-      <a href="#community"><span>Community</span></a>
+      <a href="#so-gehts"><span>So geht's</span></a>
     </nav>
     <a class="btn btn-primary btn-small" href="https://cornice-orcin.vercel.app/" rel="noopener">
       App öffnen
@@ -44,153 +42,60 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-lines" aria-hidden="true">
-      <svg class="hero-line hero-line--1" viewBox="0 0 160 64"><path d="M8,54 C 30,10 40,58 60,30 S 90,6 110,26 140,50 152,12" /></svg>
-      <svg class="hero-line hero-line--2" viewBox="0 0 160 64"><path d="M6,20 C 34,60 52,4 78,32 100,54 120,8 154,40" /></svg>
-    </div>
     <div class="wrap hero-inner">
-      <span class="eyebrow eyebrow-ch"><span class="ch-cross" aria-hidden="true"></span>Region Zürich · Für Auto &amp; Motorrad</span>
-      <h1>Die schönsten Strecken<br>vor deiner Haustür.</h1>
-      <p class="hero-sub">
-        Cornice startet lokal: kuratierte Pässe, Kurvenstrecken und
-        Ausflugsziele rund um Zürich — mit echten Streckendaten statt
-        Marketingtext. Fahren, Zeit nehmen, in der Bestenliste vergleichen.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/" rel="noopener">Strecken in Zürich entdecken</a>
-        <a class="btn btn-ghost" href="#funktionen">Wie es funktioniert</a>
-      </div>
-      <p class="hero-note">Kostenlos · Läuft im Browser · Als App installierbar</p>
-    </div>
-  </section>
-
-  <!-- LOKAL / ZÜRICH -->
-  <section class="local" id="lokal">
-    <div class="wrap local-inner">
-      <div class="local-text">
-        <p class="eyebrow">Lokal statt beliebig</p>
-        <h2>Strecken in deiner Stadt.</h2>
-        <p class="section-lede">
-          Statt einer weltweiten, beliebigen Liste startet Cornice bewusst
-          hyperlokal: zuerst die Region Zürich — vom Üetliberg über den
-          Zürichsee bis ins Zürcher Oberland — und wächst von dort aus weiter.
-          Mit «Strecken in meiner Nähe» siehst du per Standort sofort, was
-          gleich vor deiner Haustür liegt.
+      <div class="hero-copy">
+        <h1>Strecke finden.<br>Fahren. <span class="accent-text">Vergleichen.</span></h1>
+        <p class="hero-sub">
+          Cornice sammelt kuratierte Pässe und Kurvenstrecken rund um Zürich.
+          Strecke aussuchen, per GPS aufzeichnen lassen und deine Zeit direkt in
+          der Bestenliste mit anderen Fahrzeugen vergleichen.
         </p>
-        <ul class="local-points">
-          <li><span class="dot"></span>Kuratiert von Fahrern aus der Region — keine importierten Datensätze</li>
-          <li><span class="dot"></span>Strecken nach Standort sortiert, direkt im Browser</li>
-          <li><span class="dot"></span>Jede neue Stadt kommt durch Vorschläge der Community dazu</li>
-        </ul>
-      </div>
-      <svg class="skyline" viewBox="0 0 220 90" aria-hidden="true">
-        <path class="skyline-water" d="M0 78 Q 18 70 36 78 T 72 78 T 108 78 T 144 78 T 180 78 T 220 78" />
-        <g class="skyline-buildings">
-          <rect x="34" y="38" width="9" height="34" />
-          <path d="M34 38 L38.5 26 L43 38 Z" />
-          <rect x="47" y="38" width="9" height="34" />
-          <path d="M47 38 L51.5 26 L56 38 Z" />
-          <rect x="15" y="46" width="8" height="26" />
-          <circle cx="19" cy="41" r="3.5" />
-          <rect x="90" y="30" width="7" height="42" />
-          <path d="M90 30 L93.5 16 L97 30 Z" />
-        </g>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ROUTE SHOWCASE -->
-  <section class="showcase" id="strecken">
-    <div class="wrap">
-      <h2>Jede Strecke hat ihre eigene Signatur</h2>
-      <p class="section-lede">
-        Cornice erkennt automatisch, was eine Strecke besonders macht — Kehren,
-        Steigung, Höhenmeter, Tempo oder schiere Länge — und färbt sie entsprechend.
-        Auf einen Blick siehst du, worauf du dich einlässt.
-      </p>
-
-      <p class="grid-label">In der Region Zürich</p>
-      <div class="route-grid">
-
-        <article class="route-card" style="--rc: #E8590C">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M6,40 C 14,10 20,42 28,24 34,10 42,38 50,20 54,10 58,16 58,8" /></svg>
-          <div class="route-meta">
-            <h3>Albispass</h3>
-            <div class="route-tags">
-              <span class="km">14.1 km</span>
-              <span class="tag"><i></i>7 Kehren</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="route-card" style="--rc: #E8590C">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M6,20 C 16,36 22,10 30,22 38,34 44,14 58,28" /></svg>
-          <div class="route-meta">
-            <h3>Dietlikon Dash</h3>
-            <div class="route-tags">
-              <span class="km">5.7 km</span>
-              <span class="tag"><i></i>3 Kehren</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="route-card" style="--rc: #7C3AED">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M6,34 C 18,38 20,18 32,20 44,22 42,10 58,14" /></svg>
-          <div class="route-meta">
-            <h3>Forch-Höhenstrasse</h3>
-            <div class="route-tags">
-              <span class="km">9.3 km</span>
-              <span class="tag"><i></i>10.6% Steigung</span>
-            </div>
-          </div>
-        </article>
-
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/" rel="noopener">Jetzt Strecken entdecken</a>
+          <a class="text-link" href="#funktionen">Funktionen ansehen</a>
+        </div>
+        <p class="hero-note">Kostenlos · Läuft im Browser · Als App installierbar</p>
       </div>
 
-      <p class="grid-label grid-label--alt">Und weiter in die Alpen</p>
-      <div class="route-grid">
-
-        <article class="route-card" style="--rc: #0EA5E9">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M6,44 C 16,42 20,20 28,18 36,16 34,4 44,4 52,4 56,14 58,10" /></svg>
-          <div class="route-meta">
-            <h3>Flüelapass</h3>
-            <div class="route-tags">
-              <span class="km">27.4 km</span>
-              <span class="tag"><i></i>2384 Höhenmeter</span>
-            </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="preview-card">
+          <div class="preview-card-head">
+            <span class="preview-dot"></span>
+            <span class="preview-route-name">Albispass</span>
+            <span class="preview-tag">14.1 km · 7 Kehren</span>
           </div>
-        </article>
-
-        <article class="route-card" style="--rc: #7C3AED">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M8,10 C 10,30 24,26 26,42 28,30 40,34 42,18 44,6 54,10 56,26" /></svg>
-          <div class="route-meta">
-            <h3>Julierpass</h3>
-            <div class="route-tags">
-              <span class="km">37.9 km</span>
-              <span class="tag"><i></i>12% Steigung</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="route-card" style="--rc: #3D5AFE">
-          <svg class="route-shape" viewBox="0 0 64 48"><path d="M6,30 C 16,26 20,34 30,28 40,22 44,32 58,20" /></svg>
-          <div class="route-meta">
-            <h3>Klausenpass</h3>
-            <div class="route-tags">
-              <span class="km">47.3 km</span>
-              <span class="tag"><i></i>47.3 km lang</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="legend">
-        <span><i style="--c:#E8590C"></i>Kehren</span>
-        <span><i style="--c:#7C3AED"></i>Steigung</span>
-        <span><i style="--c:#0EA5E9"></i>Höhenmeter</span>
-        <span><i style="--c:#16A34A"></i>Tempo</span>
-        <span><i style="--c:#3D5AFE"></i>Länge</span>
+          <svg class="preview-route-line" viewBox="0 0 240 64">
+            <defs>
+              <linearGradient id="previewGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#6b83ff"/>
+                <stop offset="100%" stop-color="#a56bff"/>
+              </linearGradient>
+            </defs>
+            <path d="M8,54 C 30,10 60,58 90,30 120,6 150,50 180,20 200,4 220,30 232,10"/>
+          </svg>
+          <div class="preview-divider"></div>
+          <p class="preview-label">Bestenliste</p>
+          <ul class="preview-leaderboard">
+            <li>
+              <span class="preview-rank preview-rank--1">1</span>
+              <span class="preview-name">L. Meier</span>
+              <span class="preview-vehicle">Motorrad</span>
+              <span class="preview-time num">4:12.8</span>
+            </li>
+            <li>
+              <span class="preview-rank">2</span>
+              <span class="preview-name">J. Keller</span>
+              <span class="preview-vehicle">Auto</span>
+              <span class="preview-time num">4:19.3</span>
+            </li>
+            <li>
+              <span class="preview-rank">3</span>
+              <span class="preview-name">S. Brunner</span>
+              <span class="preview-vehicle">Motorrad</span>
+              <span class="preview-time num">4:24.0</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -198,50 +103,55 @@
   <!-- FEATURES -->
   <section class="features" id="funktionen">
     <div class="wrap">
-      <h2>Alles, was eine Ausfahrt besser macht</h2>
+      <p class="eyebrow">Die App</p>
+      <h2 style="margin-top: 0.9rem;">Alles für deine nächste Ausfahrt</h2>
+      <p class="section-lede">
+        Cornice ist mehr als eine Streckenliste — von der Aufzeichnung bis zur
+        Bestenliste ist alles in einer App.
+      </p>
 
       <div class="feature-grid">
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5c-3 0-5.5 2.4-5.5 5.5 0 4 5.5 9.5 5.5 9.5s5.5-5.5 5.5-9.5c0-3.1-2.5-5.5-5.5-5.5Z"/><circle cx="10" cy="8" r="2"/></svg>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5c-3 0-5.5 2.4-5.5 5.5 0 4 5.5 9.5 5.5 9.5s5.5-5.5 5.5-9.5c0-3.1-2.5-5.5-5.5-5.5Z"/><circle cx="10" cy="8" r="2"/></svg></div>
           <h3>Kuratierte Strecken erkunden</h3>
-          <p>Durchsuche Pässe, Kurvenstrecken und Panoramarouten nach Region, Länge oder Charakter — auf der Karte oder in der Liste.</p>
+          <p>Pässe, Kurvenstrecken und Panoramarouten auf der Karte durchsuchen — nach Region, Länge oder Charakter gefiltert, kuratiert und moderiert von der Community.</p>
         </div>
 
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 15c2-1 3-3 3-5s-1-4 1-5 4 1 3 3-3 2-2 4 3 2 3 4-2 3-4 2-2-2-1-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Live-Tracking &amp; Zeiten</h3>
-          <p>Strecke starten, per GPS aufzeichnen lassen und automatisch stoppen bei Ankunft — deine Zeit fliesst direkt in die Bestenliste ein.</p>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 15c2-1 3-3 3-5s-1-4 1-5 4 1 3 3-3 2-2 4 3 2 3 4-2 3-4 2-2-2-1-3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Live-Tracking &amp; automatische Rundenerkennung</h3>
+          <p>Fahrzeug wählen, Tracking starten — Ankunft wird automatisch erkannt. Auch bei freien Fahrten ordnet Cornice bekannte Streckenabschnitte automatisch zu.</p>
         </div>
 
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="11" width="4" height="6"/><rect x="8" y="7" width="4" height="10"/><rect x="13" y="3" width="4" height="14"/></svg>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="11" width="4" height="6"/><rect x="8" y="7" width="4" height="10"/><rect x="13" y="3" width="4" height="14"/></svg></div>
           <h3>Bestenlisten je Strecke &amp; Fahrzeug</h3>
-          <p>Vergleiche deine Zeit mit anderen — gefiltert nach Fahrzeug, damit ein Töff nicht gegen einen Kombi antreten muss.</p>
+          <p>Vergleiche deine Zeit mit anderen — gefiltert nach Fahrzeugklasse, damit ein Töff nicht gegen einen Kombi antreten muss.</p>
         </div>
 
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 15l4-8 3 5 2-3 3 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17h16" stroke-linecap="round"/></svg>
-          <h3>Höhenprofil &amp; Wetter</h3>
-          <p>Steigung, Höhenmeter und die aktuelle Wetterlage vor Ort auf einen Blick — bevor du überhaupt losfährst.</p>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 15l4-8 3 5 2-3 3 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17h16" stroke-linecap="round"/></svg></div>
+          <h3>Höhenprofil, Wetter &amp; Live-Verkehr</h3>
+          <p>Steigung, Höhenmeter, aktuelle Wetterlage und Verkehr direkt auf der Route eingefärbt — alles auf einen Blick, bevor du überhaupt losfährst.</p>
         </div>
 
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z"/><path d="M10 5.5V10l3 2" stroke-linecap="round"/></svg>
-          <h3>Live-Verkehr auf der Karte</h3>
-          <p>Bevor du losfährst, siehst du, wie es auf der Strecke gerade aussieht — direkt eingefärbt auf der Route.</p>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5l6.5 2.5v5c0 4.5-3 7.5-6.5 8.5-3.5-1-6.5-4-6.5-8.5v-5L10 2.5Z"/><path d="M7.2 10l2 2 3.6-4"/></svg></div>
+          <h3>Feed, Kudos &amp; Folgen</h3>
+          <p>Fahrten anderer Fahrer im Feed verfolgen, Kudos geben, kommentieren und Fotos teilen — oder Lieblingsfahrern einfach folgen.</p>
         </div>
 
         <div class="feature">
-          <svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5l6.5 2.5v5c0 4.5-3 7.5-6.5 8.5-3.5-1-6.5-4-6.5-8.5v-5L10 2.5Z"/><path d="M7.2 10l2 2 3.6-4"/></svg>
-          <h3>Von Fahrern kuratiert</h3>
-          <p>Jede Strecke wird vorgeschlagen und von der Community bewertet, kommentiert und mit Fotos ergänzt — moderiert statt beliebig.</p>
+          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z"/><path d="M6.5 10h7M10 6.5v7" stroke-linecap="round"/></svg></div>
+          <h3>Offline &amp; als App installierbar</h3>
+          <p>Strecken vorab herunterladen und ohne Empfang fahren. Als Progressive Web App installierbar — fühlt sich an wie eine native App.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="steps">
+  <section class="steps" id="so-gehts">
     <div class="wrap">
       <h2>In drei Schritten unterwegs</h2>
       <ol class="step-list">
@@ -263,19 +173,20 @@
           <span class="step-num">03</span>
           <div>
             <h3>Vergleichen</h3>
-            <p>Zeit erscheint in der Bestenliste der Strecke. Kommentieren, Fotos teilen, die nächste Strecke entdecken.</p>
+            <p>Zeit erscheint in der Bestenliste der Strecke. Im Feed kommentieren, Fotos teilen, die nächste Strecke entdecken.</p>
           </div>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- COMMUNITY / CTA -->
-  <section class="cta" id="community">
+  <!-- FINAL CTA -->
+  <section class="cta">
     <div class="wrap cta-inner">
-      <h2>Kennst du eine Strecke, die fehlt?</h2>
-      <p>Cornice lebt von Fahrern, die ihre Lieblingsstrecken teilen. Schlage eine Route vor — die Community und die Moderation sorgen für Qualität.</p>
-      <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/strecken/neu" rel="noopener">Strecke vorschlagen</a>
+      <h2>Bereit für die nächste Kurve?</h2>
+      <p>Kostenlos, läuft direkt im Browser und lässt sich als App installieren.</p>
+      <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/" rel="noopener">App öffnen</a>
+      <p class="cta-secondary">Kennst du eine Strecke, die fehlt? <a class="text-link" href="https://cornice-orcin.vercel.app/strecken/neu" rel="noopener">Strecke vorschlagen</a></p>
     </div>
   </section>
 

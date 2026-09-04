@@ -5,7 +5,7 @@ Marketing-Homepage für [Cornice](https://cornice-orcin.vercel.app/) — kuratie
 Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von der eigentlichen App (separates Repo/Deploy) läuft.
 
 - `index.html` — Seiteninhalt
-- `styles.css` — Styling (nutzt dieselben Design-Tokens wie die App: `#fafafa` / `#131316` / `#3d5afe`, Inter)
+- `styles.css` — Styling im Dark Mode der App: `#0b0b0d` / `#f2f2f4` / `#6b83ff`, Inter + IBM Plex Mono
 - `favicon.svg` — Favicon
 
 ## Lokal ansehen
