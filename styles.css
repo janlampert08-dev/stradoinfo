@@ -512,7 +512,7 @@ section h2 {
 
 .cta-secondary { margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
 
-/* ---------- Legal (Impressum) ---------- */
+/* ---------- Legal (Impressum, Datenschutz, AGB) ---------- */
 
 .legal { padding: 4rem 0 5rem; }
 
@@ -529,9 +529,136 @@ section h2 {
 
 .legal h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
 
+.legal h3 {
+  font-size: 0.925rem;
+  color: var(--muted);
+  margin: 1.5rem 0 0.4rem;
+  letter-spacing: 0;
+}
+
 .legal p { color: var(--foreground); font-size: 0.95rem; line-height: 1.7; margin: 0 0 0.5rem; }
 
-.legal a:hover { color: var(--accent); }
+.legal a { border-bottom: 1px solid var(--border-strong); }
+.legal a:hover { color: var(--accent); border-color: var(--accent); }
+
+.legal ul, .legal ol {
+  color: var(--foreground);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.legal li { margin-bottom: 0.35rem; }
+.legal li::marker { color: var(--muted); }
+
+/* Datum-/Stand-Zeile direkt unter der Überschrift. */
+.legal-stand {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: -1.25rem 0 2rem;
+}
+
+/* Inhaltsverzeichnis für die längeren Texte (AGB, Datenschutz). Ohne das
+   sind 16 Ziffern auf dem Handy nicht navigierbar. */
+.legal-toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  margin: 0 0 2.5rem;
+}
+.legal-toc p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 0.6rem; }
+.legal-toc ol { margin: 0; padding-left: 1.1rem; font-size: 0.9rem; }
+.legal-toc li { margin-bottom: 0.2rem; }
+.legal-toc a { border-bottom: none; color: var(--foreground); }
+
+/* Anker sollen nicht unter dem klebrigen Header verschwinden. */
+.legal h2[id] { scroll-margin-top: 5rem; }
+
+/* Hinweiskasten im Fliesstext (z. B. „was andere sehen können"). */
+.legal-note {
+  border-left: 2px solid var(--accent);
+  background: var(--accent-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0 1.25rem;
+}
+.legal-note p { font-size: 0.9rem; margin: 0 0 0.4rem; }
+.legal-note p:last-child { margin-bottom: 0; }
+
+/* Entwurfs-Banner. Bewusst laut: ein ungeprüfter Rechtstext, der wie ein
+   geprüfter aussieht, ist schlimmer als gar keiner. */
+.legal-draft {
+  border: 1px solid #d98a2b;
+  background: color-mix(in oklch, #d98a2b 12%, var(--background));
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  margin: 0 0 2.25rem;
+}
+.legal-draft strong { color: #f0a94a; }
+.legal-draft p { font-size: 0.9rem; margin: 0 0 0.5rem; }
+.legal-draft p:last-child { margin-bottom: 0; }
+
+/* Noch nicht eingesetzte Angabe (Firma, Adresse, Gerichtsstand). Sichtbar
+   markiert, damit sie beim Korrekturlesen nicht durchrutscht. */
+.todo {
+  display: inline-block;
+  background: color-mix(in oklch, #d98a2b 22%, var(--background));
+  border: 1px dashed #d98a2b;
+  border-radius: 0.3rem;
+  padding: 0 0.35rem;
+  color: #f0a94a;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* Tabellen (Preise, Auftragsbearbeiter, Aufbewahrungsfristen). Der Wrapper
+   scrollt, nicht die Seite. */
+.legal-table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+
+.legal table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.legal th, .legal td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+.legal th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom-color: var(--border-strong);
+}
+.legal tr:last-child td { border-bottom: none; }
+
+/* Übersichtsseite /legal */
+.legal-index { display: grid; gap: 0.75rem; margin-top: 2rem; }
+
+.legal-index a {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1.1rem 1.25rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.legal-index a:hover { border-color: var(--accent); transform: translateY(-1px); color: inherit; }
+.legal-index h2 {
+  font-size: 1rem;
+  border-top: none;
+  padding-top: 0;
+  margin: 0 0 0.3rem;
+}
+.legal-index p { color: var(--muted); font-size: 0.9rem; margin: 0; }
 
 /* ---------- Footer ---------- */
 

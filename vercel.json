@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/impressum.html", "destination": "/legal/impressum", "permanent": true },
+    { "source": "/impressum", "destination": "/legal/impressum", "permanent": true },
+    { "source": "/datenschutz.html", "destination": "/legal/datenschutz", "permanent": true },
+    { "source": "/datenschutz", "destination": "/legal/datenschutz", "permanent": true },
+    { "source": "/nutzungsbedingungen.html", "destination": "/legal/agb", "permanent": true },
+    { "source": "/nutzungsbedingungen", "destination": "/legal/agb", "permanent": true },
+    { "source": "/agb", "destination": "/legal/agb", "permanent": true }
+  ]
+}
