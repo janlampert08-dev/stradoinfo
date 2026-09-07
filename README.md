@@ -110,7 +110,7 @@ Verzeichnis nach `class="todo"` und `legal-draft` suchen.
 ### Vor dem Premium-Start ebenfalls anpassen
 
 `index.html` bewirbt Strado an drei Stellen als „kostenlos" (Meta-Beschreibung,
-Hero-Notiz, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
+Hero-Merkmale, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
 Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
 
 ## Domains
