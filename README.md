@@ -53,16 +53,20 @@ Die Pflichtangaben sind seit dem 7. September 2026 eingesetzt (Stand-Datum
 aller drei Texte): Anbieter ist Jan Lampert, Einzelunternehmen ohne
 Handelsregistereintrag, c/o Softsite AG, Leutschenbachstrasse 45, 8050 Zürich;
 Kontakt ausschliesslich per E-Mail; Gerichtsstand Zürich (AGB Ziff. 16.4).
-Eine UID- oder MWST-Nummer gibt es nicht, weil keine Steuerpflicht besteht —
-der frühere Abschnitt „Register und Steuern" im Impressum ist deshalb
-gestrichen, nicht leer gelassen. Die Entwurfsbanner und die orange markierten
+Zwei Angaben entfallen getrennt voneinander: Es besteht keine
+MWST-Pflicht (Umsatz unter CHF 100'000), also gibt es keine MWST-Nummer; und
+das Einzelunternehmen ist weder im Handelsregister eingetragen noch führt es
+eine UID. Der frühere Abschnitt „Register und Steuern" im Impressum ist
+deshalb gestrichen, nicht leer gelassen. Die Entwurfsbanner und die orange markierten
 Platzhalter sind mit demselben Stand entfernt.
 
 Seit demselben Datum beschreiben die AGB das Premium-Abo, wie es verkauft
 wird: Eigene Strecken sind eine Premium-Funktion (Ziff. 3.1/3.2), der
 Gründerpreis wird nicht mehr angeboten und gilt nur noch für davor
 abgeschlossene Abos (Ziff. 4.3). `index.html` wirbt entsprechend nicht mehr
-mit „kostenlos", sondern mit „gratis starten, eigene Strecken mit Premium".
+mit „kostenlos", sondern mit Gratis-Einstieg und eigenen Strecken als
+Premium-Funktion („Gratis loslegen, eigene Strecken mit Premium" in der
+Meta-Beschreibung, sinngemäss in Hero-Notiz und Schluss-CTA).
 
 ## Domains
 
