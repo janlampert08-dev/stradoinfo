@@ -29,10 +29,13 @@ gleiche Werte. **Wer sie dort ändert, sollte hier mitziehen.**
 | Was | Übernommen aus |
 | --- | --- |
 | Farben, Radien, Schatten, Übergänge, Typo-Skala | `app/globals.css` |
-| Knöpfe (`.btn-primary`, `.btn-secondary`, Grössen `sm`/`md`) | `components/ui/Button.tsx` |
+| Knöpfe (`.btn-primary`, `.btn-secondary`, Grösse `sm`) | `components/ui/Button.tsx` |
 | Flächen (`.card`: Haarlinie, `--radius-lg`, kein Verlauf) | `components/ui/Card.tsx` |
 | Kopfzeile (klebend, transluzent, `blur(24px)`) | `components/Header.tsx` |
-| Bestenliste in der Hero-Vorschau | `components/RouteLeaderboardPreview.tsx` |
+| Streckendetail in der Hero-Vorschau | `app/strecken/[id]/page.tsx` |
+| Höhenprofil darin | `components/ElevationProfile.tsx` |
+| Bestenliste darin | `components/RouteLeaderboardPreview.tsx` |
+| Akzent-Knopf „Strecke starten“ darin | `components/GefahrenSection.tsx` |
 | Symbole (24er-viewBox, Kontur, `stroke-width` 2) | Lucide, wie `lucide-react` in der App |
 
 Zwei bewusste Abweichungen, beide in `styles.css` kommentiert:

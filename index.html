@@ -84,57 +84,97 @@
         </ul>
       </div>
 
-      <!-- Ausschnitt aus der App: dieselbe Karte, die eine Streckenseite unter
-           "Bestzeiten" zeigt (components/RouteLeaderboardPreview.tsx). Die
-           Namen und Zeiten sind Beispieldaten, die Darstellung ist es nicht. -->
-      <div class="card preview-card" aria-hidden="true">
-        <p class="preview-route-name">Albispass</p>
-        <p class="preview-stats">
-          <span><span class="num">14.1</span> km</span>
-          <span>·</span>
-          <span><span class="num">7</span> Kehren</span>
-          <span>·</span>
-          <span><span class="num">320</span> hm</span>
-        </p>
-        <svg class="preview-profile" viewBox="0 0 240 48" preserveAspectRatio="none">
-          <path d="M4 40 C 28 34 40 12 62 16 84 20 96 40 118 34 140 28 150 8 172 10 194 12 212 30 236 22"/>
-        </svg>
+      <!-- Ausschnitt aus der App: das Detail-Panel einer Streckenseite, in der
+           Reihenfolge, in der app/strecken/[id]/page.tsx es rendert — Kopf,
+           "Strecke starten" (components/GefahrenSection.tsx), Hoehenprofil
+           (components/ElevationProfile.tsx, gleiche Abbildung von km/m auf
+           den 600x120-viewBox), Kennzahlen-Kacheln und Bestzeiten
+           (components/RouteLeaderboardPreview.tsx). Die Zahlen sind
+           Beispieldaten, die Darstellung ist es nicht. -->
+      <div class="card app-shot" aria-hidden="true">
+        <div>
+          <p class="shot-region">Zürich · Rundfahrt</p>
+          <p class="shot-name">Albispass</p>
+          <p class="shot-orte">Adliswil → Hausen am Albis</p>
+        </div>
 
-        <p class="preview-label">Bestzeiten</p>
-        <ol class="preview-leaderboard">
-          <li>
-            <span class="preview-rank">
-              <!-- Pokal in Gold/Silber/Bronze wie in der App, Farben aus
-                   MEDAL_COLORS (lib/constants.ts). -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-            </span>
-            <span class="preview-avatar">L</span>
-            <span class="preview-name">L. Meier</span>
-            <span class="preview-time num">04:12</span>
-          </li>
-          <li>
-            <span class="preview-rank">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#A8A9AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-            </span>
-            <span class="preview-avatar">J</span>
-            <span class="preview-name">J. Keller</span>
-            <span class="preview-time num">04:19</span>
-          </li>
-          <li>
-            <span class="preview-rank">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#CD7F32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-            </span>
-            <span class="preview-avatar">S</span>
-            <span class="preview-name">S. Brunner</span>
-            <span class="preview-time num">04:24</span>
-          </li>
-          <li>
-            <span class="preview-rank num">4.</span>
-            <span class="preview-avatar">A</span>
-            <span class="preview-name">A. Bühler</span>
-            <span class="preview-time num">04:31</span>
-          </li>
-        </ol>
+        <div class="shot-start">
+          <span class="shot-start-knopf">Strecke starten</span>
+        </div>
+
+        <div class="shot-profil">
+          <svg viewBox="0 0 600 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="hoehenverlauf" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-opacity="0.25"/>
+                <stop offset="100%" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#hoehenverlauf)" d="M 0.0 116.0 L 21.3 114.8 L 42.6 111.5 L 63.8 106.0 L 85.1 97.6 L 106.4 87.9 L 127.7 78.2 L 148.9 69.7 L 170.2 61.6 L 191.5 54.9 L 212.8 48.0 L 234.0 41.3 L 255.3 34.4 L 276.6 27.4 L 297.9 20.2 L 319.1 14.7 L 331.9 12.0 L 348.9 13.2 L 366.0 17.4 L 383.0 23.8 L 404.3 32.3 L 425.5 40.4 L 446.8 48.3 L 468.1 56.4 L 489.4 64.9 L 510.6 73.4 L 531.9 81.2 L 553.2 88.8 L 574.5 95.4 L 600.0 102.1 L 600 120 L 0 120 Z"/>
+            <path class="shot-linie" d="M 0.0 116.0 L 21.3 114.8 L 42.6 111.5 L 63.8 106.0 L 85.1 97.6 L 106.4 87.9 L 127.7 78.2 L 148.9 69.7 L 170.2 61.6 L 191.5 54.9 L 212.8 48.0 L 234.0 41.3 L 255.3 34.4 L 276.6 27.4 L 297.9 20.2 L 319.1 14.7 L 331.9 12.0 L 348.9 13.2 L 366.0 17.4 L 383.0 23.8 L 404.3 32.3 L 425.5 40.4 L 446.8 48.3 L 468.1 56.4 L 489.4 64.9 L 510.6 73.4 L 531.9 81.2 L 553.2 88.8 L 574.5 95.4 L 600.0 102.1"/>
+            <circle class="shot-gipfel" cx="331.9" cy="12.0" r="3"/>
+          </svg>
+          <p class="shot-profil-fuss num">
+            <span>466 m</span>
+            <span>810 m bei km 8</span>
+            <span>810 m</span>
+          </p>
+        </div>
+
+        <dl class="shot-werte">
+          <div class="shot-wert">
+            <dt>Länge</dt>
+            <dd class="num shot-wert-gross">14.1 km</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Höhe</dt>
+            <dd class="num shot-wert-gross">810 m</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Max. Steigung</dt>
+            <dd class="num">9%</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Kehren</dt>
+            <dd class="num">7</dd>
+          </div>
+        </dl>
+
+        <div>
+          <p class="shot-label">Bestzeiten</p>
+          <ol class="shot-bestzeiten">
+            <li>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">L</span>
+              <span class="shot-fahrer">L. Meier</span>
+              <span class="shot-zeit num">04:12</span>
+            </li>
+            <li>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#A8A9AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">J</span>
+              <span class="shot-fahrer">J. Keller</span>
+              <span class="shot-zeit num">04:19</span>
+            </li>
+            <li>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#CD7F32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">S</span>
+              <span class="shot-fahrer">S. Brunner</span>
+              <span class="shot-zeit num">04:24</span>
+            </li>
+            <li>
+              <span class="shot-rang num">4.</span>
+              <span class="shot-avatar">A</span>
+              <span class="shot-fahrer">A. Bühler</span>
+              <span class="shot-zeit num">04:31</span>
+            </li>
+            <li>
+              <span class="shot-rang num">5.</span>
+              <span class="shot-avatar">M</span>
+              <span class="shot-fahrer">M. Frei</span>
+              <span class="shot-zeit num">04:38</span>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>

@@ -273,8 +273,10 @@ h1, h2, h3 {
 
 .btn-secondary:hover { border-color: var(--color-border-strong); }
 
+/* sm ist die Groesse, die die App im Header setzt; lg gibt es dort nicht
+   (siehe Kommentar oben). Die mittlere Groesse fuehrt diese Seite nicht mit,
+   weil sie hier an keiner Stelle vorkommt. */
 .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
-.btn-md { padding: 0.5rem 1rem; font-size: 0.875rem; }
 .btn-lg { padding: 0.6875rem 1.375rem; font-size: 0.9375rem; }
 
 .text-link {
@@ -396,36 +398,78 @@ section h2 {
 
 /* ---------- Produktvorschau im Hero ----------
  *
- * Nachbau von components/RouteLeaderboardPreview.tsx: Karte mit Haarlinie,
- * Trennlinien zwischen den Eintraegen, Pokale in den drei Medaillenfarben
- * aus lib/constants.ts (MEDAL_COLORS), Zeiten in IBM Plex Mono.
+ * Nachbau des Detail-Panels einer Streckenseite, Block fuer Block aus dem
+ * App-Repo: Kopfzeile und Kennzahlen-Kacheln aus app/strecken/[id]/page.tsx,
+ * der Akzent-Knopf aus components/GefahrenSection.tsx, das Hoehenprofil aus
+ * components/ElevationProfile.tsx (gleicher viewBox, gleicher Verlauf,
+ * gleicher Gipfelpunkt) und die Bestzeiten aus
+ * components/RouteLeaderboardPreview.tsx.
  */
 
-.preview-card {
+.app-shot {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin: 0 auto;
-  max-width: 24rem;
+  max-width: 26rem;
   padding: 1.25rem;
   box-shadow: var(--shadow-elevated);
 }
 
-.preview-route-name {
-  margin: 0 0 0.25rem;
-  font-size: var(--text-title);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.preview-stats {
-  display: flex;
-  gap: 0.375rem;
-  margin: 0 0 1rem;
-  font-size: 0.75rem;
+.shot-region,
+.shot-orte {
+  margin: 0;
+  font-size: 0.875rem;
   color: var(--color-muted);
 }
 
-.preview-profile { width: 100%; height: 48px; margin-bottom: 1.25rem; }
+.shot-name {
+  margin: 0;
+  font-size: var(--text-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
-.preview-profile path {
+.shot-orte { margin-top: 0.25rem; }
+
+/* Der Knopf steht in der App ueber einer Trennlinie und ist der einzige
+   flaechige Akzent auf der Seite — hier genauso, als Blickfang des
+   Ausschnitts. Ein <span>, kein <a>: der Ausschnitt ist ein Bild, kein
+   zweiter Weg in die App. */
+.shot-start {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.25rem;
+}
+
+.shot-start-knopf {
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  padding: 0.6rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-background);
+}
+
+/* ---- Hoehenprofil ---- */
+
+.shot-profil svg {
+  width: 100%;
+  height: 6rem;
+}
+
+/* stop-color gehoert hierher: eine Praesentationsangabe im Markup nimmt kein
+   var(), der Verlauf bliebe im dunklen Schema auf dem hellen Akzentton
+   stehen — dasselbe Problem loest ElevationProfile.tsx drueben ueber ein
+   style-Objekt. Das fill="url(#hoehenverlauf)" der Flaeche steht dagegen
+   bewusst im Markup: ein url(#id) in einem Stylesheet loest gegen dessen
+   eigene Adresse auf und faende den Verlauf im Dokument nicht sicher. */
+.shot-profil stop { stop-color: var(--color-accent); }
+
+.shot-linie {
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 2;
@@ -433,16 +477,54 @@ section h2 {
   stroke-linejoin: round;
 }
 
-.preview-label {
-  margin: 0 0 0.5rem;
+.shot-gipfel { fill: var(--color-accent); }
+
+.shot-profil-fuss {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0;
   font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* ---- Kennzahlen ---- */
+
+/* Die App zeigt sie zweispaltig und ab sm vierspaltig; in dieser Breite ist
+   zweispaltig die Fassung, die traegt. */
+.shot-werte {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.shot-wert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  padding: 0.875rem;
+}
+
+.shot-wert dt { font-size: 0.8125rem; color: var(--color-muted); }
+.shot-wert dd { margin: 0; font-size: 0.875rem; }
+.shot-wert-gross { font-size: var(--text-title); font-weight: 600; }
+
+/* ---- Bestzeiten ---- */
+
+.shot-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
 
-.preview-leaderboard {
+.shot-bestzeiten {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -451,7 +533,7 @@ section h2 {
   background: var(--color-background);
 }
 
-.preview-leaderboard li {
+.shot-bestzeiten li {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -459,21 +541,20 @@ section h2 {
   font-size: 0.875rem;
 }
 
-.preview-leaderboard li + li { border-top: 1px solid var(--color-border); }
+.shot-bestzeiten li + li { border-top: 1px solid var(--color-border); }
 
-.preview-rank {
+.shot-rang {
   display: flex;
   width: 1rem;
   flex-shrink: 0;
   justify-content: center;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.75rem;
   color: var(--color-muted);
 }
 
-.preview-rank svg { width: 1rem; height: 1rem; }
+.shot-rang svg { width: 1rem; height: 1rem; }
 
-.preview-avatar {
+.shot-avatar {
   display: flex;
   width: 1.5rem;
   height: 1.5rem;
@@ -488,7 +569,7 @@ section h2 {
   color: var(--color-muted);
 }
 
-.preview-name {
+.shot-fahrer {
   min-width: 0;
   flex: 1;
   overflow: hidden;
@@ -496,7 +577,7 @@ section h2 {
   white-space: nowrap;
 }
 
-.preview-time {
+.shot-zeit {
   flex-shrink: 0;
   font-size: 0.8125rem;
   color: var(--color-muted);
