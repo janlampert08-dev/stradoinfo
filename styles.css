@@ -591,6 +591,10 @@ section h2 {
    geprüfter aussieht, ist schlimmer als gar keiner. */
 .legal-draft {
   border: 1px solid #d98a2b;
+  /* Statischer Vorgabewert zuerst: ein Browser ohne color-mix() verwirft die
+     Zeile darunter und stünde sonst ganz ohne Warnhintergrund da — bei einem
+     Kasten, dessen einziger Zweck das Warnen ist. */
+  background: rgba(217, 138, 43, 0.12);
   background: color-mix(in oklch, #d98a2b 12%, var(--background));
   border-radius: var(--radius-md);
   padding: 1.1rem 1.25rem;
@@ -604,6 +608,9 @@ section h2 {
    markiert, damit sie beim Korrekturlesen nicht durchrutscht. */
 .todo {
   display: inline-block;
+  /* Wie oben: ohne Vorgabewert wäre eine offene Pflichtangabe nicht mehr
+     als solche zu erkennen. */
+  background: rgba(217, 138, 43, 0.22);
   background: color-mix(in oklch, #d98a2b 22%, var(--background));
   border: 1px dashed #d98a2b;
   border-radius: 0.3rem;

@@ -1,6 +1,6 @@
 # cornice.ch
 
-Marketing-Homepage und Rechtstexte für [Cornice](https://cornice-orcin.vercel.app/) — kuratierte Fahrstrecken für Auto und Motorrad.
+Marketing-Homepage und Rechtstexte für Cornice — kuratierte Fahrstrecken für Auto und Motorrad.
 
 Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von der eigentlichen App (separates Repo/Deploy) läuft.
 
@@ -60,18 +60,34 @@ Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
 
 ## Domains
 
-Aktuell erreichbar unter `cornice-ch.vercel.app`; die App unter
-`cornice-orcin.vercel.app`. Zielzustand:
+**Es ist noch keine eigene Domain registriert.** Massgebend sind daher
+ausschliesslich die vercel.app-Adressen:
 
-| Was | Domain |
+| Was | Heute erreichbar unter |
 | --- | --- |
-| Info-Homepage | `cornice.ch` |
-| Rechtstexte | `cornice.ch/legal/…` |
-| App | `app.cornice.ch` |
+| Info-Homepage und Rechtstexte | `cornice-ch.vercel.app` |
+| App | `cornice-orcin.vercel.app` |
 
-Beide Custom Domains sind bei Vercel **noch nicht eingetragen**. Bis dahin
-zeigen die Links „App öffnen" in Kopf- und Fusszeile auf die
-`vercel.app`-Adresse und müssen mit dem Domain-Wechsel angepasst werden.
+Geplant ist die Aufteilung Info-Homepage auf der Hauptdomain, Rechtstexte
+unter `/legal/…` und die App auf einer `app.`-Subdomain. Welche Domain das
+wird, ist offen.
+
+Was beim Kauf einer Domain anzupassen ist — die Liste ist vollständig, damit
+nichts auf eine Adresse zeigt, die noch niemandem gehört:
+
+1. Domain bei Vercel als Custom Domain auf `stradoinfo` (Info-Seite) und auf
+   `strado` (App) eintragen.
+2. In diesem Repo: die Links „App öffnen“ in Kopf- und Fusszeile jeder Seite
+   sowie `og:url`/`og:image` in `index.html`.
+3. In `janlampert08-dev/strado`: die Umgebungsvariable
+   `NEXT_PUBLIC_LEGAL_BASE_URL` auf die neue Basis setzen (ohne sie fällt
+   `LEGAL_URLS` auf `cornice-ch.vercel.app` zurück, was weiterhin
+   funktioniert) und `NEXT_PUBLIC_SITE_URL` mitziehen.
+4. In den Rechtstexten: die in AGB Ziff. 1.1 genannte Adresse.
+
+Bis dahin steht in den Texten keine Wunschdomain: eine Adresse, die man
+nicht besitzt, kann jederzeit jemand anderem gehören — und sie stünde dann
+unter der Überschrift „Impressum".
 
 ## Lokal ansehen
 
