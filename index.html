@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Strado — Kuratierte Fahrstrecken für Auto &amp; Motorrad</title>
 <meta name="description" content="Strado: kuratierte Pässe und Kurvenstrecken entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen — inklusive Feed, Höhenprofil, Wetter und Offline-Modus. Kostenlos, lokal gestartet in Zürich.">
-<meta name="theme-color" content="#0B0B0D">
+
+<!-- Zwei Werte statt eines festen dunklen: die Seite folgt jetzt wie die App
+     der Systemvorgabe (siehe styles.css). Dieselben Farben wie in
+     app/layout.tsx des App-Repos. -->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAFA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0B0D">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Strado — Kuratierte Fahrstrecken für Auto & Motorrad">
@@ -24,7 +29,9 @@
      twitter:card, ohne die X keine grosse Karte zeigt. Absolute Adresse,
      weil Open Graph keine relativen Pfade zulaesst. Wer die Datei
      umbenennt oder entfernt, muss diese Zeilen mitnehmen: ein
-     Vorschaubild, das 404 liefert, ist schlechter als gar keines. -->
+     Vorschaubild, das 404 liefert, ist schlechter als gar keines.
+     Das Bild bleibt bewusst einfarbig dunkel: eine Vorschau in einem
+     Chat-Fenster kennt das Farbschema des Betrachters nicht. -->
 <meta property="og:image" content="https://strado.ch/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,24 +41,24 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Inter und IBM Plex Mono, dieselben zwei Schriften wie die App
+     (app/layout.tsx). Eine dritte kommt auch hier nicht dazu: die Wortmarke
+     ist eine Kontur, keine gesetzte Schrift. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="/" class="logo"><img src="/wortmarke.svg" alt="Strado" width="107" height="27"></a>
-    <nav class="site-nav">
-      <a href="#funktionen"><span>Funktionen</span></a>
-      <a href="#so-gehts"><span>So geht's</span></a>
-    </nav>
-    <a class="btn btn-primary btn-small" href="https://app.strado.ch/" rel="noopener">
-      App öffnen
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="13" height="13">
-        <path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5"/>
-      </svg>
-    </a>
+    <a href="/" class="logo"><span class="wortmarke">strado</span></a>
+    <div class="header-actions">
+      <nav class="site-nav">
+        <a href="#funktionen">Funktionen</a>
+        <a href="#so-gehts">So geht's</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
+    </div>
   </div>
 </header>
 
@@ -68,141 +75,199 @@
           der Bestenliste mit anderen Fahrzeugen vergleichen.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="https://app.strado.ch/" rel="noopener">Jetzt Strecken entdecken</a>
+          <a class="btn btn-primary btn-lg" href="https://app.strado.ch/" rel="noopener">Jetzt Strecken entdecken</a>
           <a class="text-link" href="#funktionen">Funktionen ansehen</a>
         </div>
-        <p class="hero-note">Kostenlos · Läuft im Browser · Als App installierbar</p>
+        <ul class="hero-badges">
+          <li>Kostenlos</li>
+          <li>Läuft im Browser</li>
+        </ul>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="preview-card">
-          <div class="preview-card-head">
-            <span class="preview-dot"></span>
-            <span class="preview-route-name">Albispass</span>
-            <span class="preview-tag">14.1 km · 7 Kehren</span>
-          </div>
-          <svg class="preview-route-line" viewBox="0 0 240 64">
+      <!-- Ausschnitt aus der App: das Detail-Panel einer Streckenseite, in der
+           Reihenfolge, in der app/strecken/[id]/page.tsx es rendert — Kopf,
+           "Strecke starten" (components/GefahrenSection.tsx), Hoehenprofil
+           (components/ElevationProfile.tsx, gleiche Abbildung von km/m auf
+           den 600x120-viewBox), Kennzahlen-Kacheln und Bestzeiten
+           (components/RouteLeaderboardPreview.tsx).
+
+           Strecke und Kennzahlen stammen aus der Datenbank der App (siehe
+           das Skript unter der Karte). Die Fahrernamen und Zeiten sind
+           erfunden: echte Nutzernamen und Fahrten gehoeren niemandem, der
+           ihrer Veroeffentlichung auf einer Werbeseite zugestimmt hat. -->
+      <div class="card app-shot" aria-hidden="true">
+        <div>
+          <p class="shot-region">Maur · Rundfahrt</p>
+          <p class="shot-name">Binzmer Backfire</p>
+          <p class="shot-orte">Start/Ziel: Maur</p>
+        </div>
+
+        <div class="shot-start">
+          <span class="shot-start-knopf">Strecke starten</span>
+        </div>
+
+        <div class="shot-profil">
+          <svg viewBox="0 0 600 120" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="previewGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#6b83ff"/>
-                <stop offset="100%" stop-color="#a56bff"/>
+              <linearGradient id="hoehenverlauf" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-opacity="0.25"/>
+                <stop offset="100%" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <path d="M8,54 C 30,10 60,58 90,30 120,6 150,50 180,20 200,4 220,30 232,10"/>
+            <path fill="url(#hoehenverlauf)" d="M 0.0 109.7 L 71.4 110.3 L 140.1 116.0 L 152.9 114.3 L 212.1 114.9 L 240.0 108.0 L 281.3 76.0 L 310.3 54.3 L 362.2 28.0 L 408.6 12.0 L 457.1 21.7 L 515.7 45.1 L 572.1 90.9 L 600.0 109.7 L 600 120 L 0 120 Z"/>
+            <path class="shot-linie" d="M 0.0 109.7 L 71.4 110.3 L 140.1 116.0 L 152.9 114.3 L 212.1 114.9 L 240.0 108.0 L 281.3 76.0 L 310.3 54.3 L 362.2 28.0 L 408.6 12.0 L 457.1 21.7 L 515.7 45.1 L 572.1 90.9 L 600.0 109.7"/>
+            <circle class="shot-gipfel" cx="408.6" cy="12.0" r="3"/>
           </svg>
-          <div class="preview-divider"></div>
-          <p class="preview-label">Bestenliste</p>
-          <ul class="preview-leaderboard">
+          <p class="shot-profil-fuss num">
+            <span>444 m</span>
+            <span>626 m bei km 7</span>
+            <span>626 m</span>
+          </p>
+        </div>
+
+        <dl class="shot-werte">
+          <div class="shot-wert">
+            <dt>Länge</dt>
+            <dd class="num shot-wert-gross">10.7 km</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Höhe</dt>
+            <dd class="num shot-wert-gross">626 m</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Max. Steigung</dt>
+            <dd class="num">8%</dd>
+          </div>
+          <div class="shot-wert">
+            <dt>Kehren</dt>
+            <dd class="num">5</dd>
+          </div>
+        </dl>
+
+        <div>
+          <p class="shot-label">Bestzeiten</p>
+          <ol class="shot-bestzeiten">
             <li>
-              <span class="preview-rank preview-rank--1">1</span>
-              <span class="preview-name">L. Meier</span>
-              <span class="preview-vehicle">Motorrad</span>
-              <span class="preview-time num">4:12.8</span>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">B</span>
+              <span class="shot-fahrer">backfire_bene</span>
+              <span class="shot-zeit num">14:16</span>
             </li>
             <li>
-              <span class="preview-rank">2</span>
-              <span class="preview-name">J. Keller</span>
-              <span class="preview-vehicle">Auto</span>
-              <span class="preview-time num">4:19.3</span>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#A8A9AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">A</span>
+              <span class="shot-fahrer">apex_andi</span>
+              <span class="shot-zeit num">14:33</span>
             </li>
             <li>
-              <span class="preview-rank">3</span>
-              <span class="preview-name">S. Brunner</span>
-              <span class="preview-vehicle">Motorrad</span>
-              <span class="preview-time num">4:24.0</span>
+              <span class="shot-rang"><svg viewBox="0 0 24 24" fill="none" stroke="#CD7F32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              <span class="shot-avatar">K</span>
+              <span class="shot-fahrer">kurven_kim</span>
+              <span class="shot-zeit num">14:52</span>
             </li>
-          </ul>
+            <li>
+              <span class="shot-rang num">4.</span>
+              <span class="shot-avatar">T</span>
+              <span class="shot-fahrer">twincam92</span>
+              <span class="shot-zeit num">15:20</span>
+            </li>
+            <li>
+              <span class="shot-rang num">5.</span>
+              <span class="shot-avatar">T</span>
+              <span class="shot-fahrer">toeffli_tim</span>
+              <span class="shot-zeit num">15:58</span>
+            </li>
+          </ol>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- FUNKTIONEN -->
+  <!-- Die Symbole folgen den Konturen von Lucide (ISC-Lizenz), aus dem die
+       App ihre Symbole bezieht (lucide-react, siehe components/NavIcons.tsx).
+       Deshalb 24er-viewBox und stroke-width 2 statt der frueheren eigenen
+       Zeichnungen. -->
   <section class="features" id="funktionen">
     <div class="wrap">
-      <p class="eyebrow">Die App</p>
-      <h2 style="margin-top: 0.9rem;">Alles für deine nächste Ausfahrt</h2>
+      <p class="section-label">Die App</p>
+      <h2>Alles für deine nächste Ausfahrt</h2>
       <p class="section-lede">
         Strado ist mehr als eine Streckenliste — von der Aufzeichnung bis zur
         Bestenliste ist alles in einer App.
       </p>
 
       <div class="feature-grid">
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5c-3 0-5.5 2.4-5.5 5.5 0 4 5.5 9.5 5.5 9.5s5.5-5.5 5.5-9.5c0-3.1-2.5-5.5-5.5-5.5Z"/><circle cx="10" cy="8" r="2"/></svg></div>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
           <h3>Kuratierte Strecken erkunden</h3>
           <p>Pässe, Kurvenstrecken und Panoramarouten auf der Karte durchsuchen — nach Region, Länge oder Charakter gefiltert, kuratiert und moderiert von der Community.</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 15c2-1 3-3 3-5s-1-4 1-5 4 1 3 3-3 2-2 4 3 2 3 4-2 3-4 2-2-2-1-3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></span>
           <h3>Live-Tracking &amp; automatische Rundenerkennung</h3>
           <p>Fahrzeug wählen, Tracking starten — Ankunft wird automatisch erkannt. Auch bei freien Fahrten ordnet Strado bekannte Streckenabschnitte automatisch zu.</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="11" width="4" height="6"/><rect x="8" y="7" width="4" height="10"/><rect x="13" y="3" width="4" height="14"/></svg></div>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
           <h3>Bestenlisten je Strecke &amp; Fahrzeug</h3>
           <p>Vergleiche deine Zeit mit anderen — gefiltert nach Fahrzeugklasse, damit ein Töff nicht gegen einen Kombi antreten muss.</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 15l4-8 3 5 2-3 3 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17h16" stroke-linecap="round"/></svg></div>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
           <h3>Höhenprofil, Wetter &amp; Live-Verkehr</h3>
           <p>Steigung, Höhenmeter, aktuelle Wetterlage und Verkehr direkt auf der Route eingefärbt — alles auf einen Blick, bevor du überhaupt losfährst.</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2.5l6.5 2.5v5c0 4.5-3 7.5-6.5 8.5-3.5-1-6.5-4-6.5-8.5v-5L10 2.5Z"/><path d="M7.2 10l2 2 3.6-4"/></svg></div>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></svg></span>
           <h3>Feed, Kudos &amp; Folgen</h3>
           <p>Fahrten anderer Fahrer im Feed verfolgen, Kudos geben, kommentieren und Fotos teilen — oder Lieblingsfahrern einfach folgen.</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z"/><path d="M6.5 10h7M10 6.5v7" stroke-linecap="round"/></svg></div>
-          <h3>Offline &amp; als App installierbar</h3>
-          <p>Strecken vorab herunterladen und ohne Empfang fahren. Als Progressive Web App installierbar — fühlt sich an wie eine native App.</p>
+        <div class="card feature">
+          <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 2 20 20"/><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"/><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"/></svg></span>
+          <h3>Offline nutzbar</h3>
+          <p>Strecken vorab herunterladen und ohne Empfang fahren — auch dort, wo auf dem Pass das Netz aufhört.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- SO GEHT'S -->
   <section class="steps" id="so-gehts">
     <div class="wrap">
+      <p class="section-label">So geht's</p>
       <h2>In drei Schritten unterwegs</h2>
       <ol class="step-list">
-        <li>
+        <li class="card">
           <span class="step-num">01</span>
-          <div>
-            <h3>Strecke finden</h3>
-            <p>Nach Region, Kategorie oder Standort suchen — jede Strecke zeigt Länge, Kehren, Steigung und mehr auf einen Blick.</p>
-          </div>
+          <h3>Strecke finden</h3>
+          <p>Nach Region, Kategorie oder Standort suchen — jede Strecke zeigt Länge, Kehren, Steigung und mehr auf einen Blick.</p>
         </li>
-        <li>
+        <li class="card">
           <span class="step-num">02</span>
-          <div>
-            <h3>Fahren</h3>
-            <p>Fahrzeug wählen, Tracking starten und fahren, so schnell es sicher und erlaubt ist. Ankunft wird automatisch erkannt.</p>
-          </div>
+          <h3>Fahren</h3>
+          <p>Fahrzeug wählen, Tracking starten und fahren, so schnell es sicher und erlaubt ist. Ankunft wird automatisch erkannt.</p>
         </li>
-        <li>
+        <li class="card">
           <span class="step-num">03</span>
-          <div>
-            <h3>Vergleichen</h3>
-            <p>Zeit erscheint in der Bestenliste der Strecke. Im Feed kommentieren, Fotos teilen, die nächste Strecke entdecken.</p>
-          </div>
+          <h3>Vergleichen</h3>
+          <p>Zeit erscheint in der Bestenliste der Strecke. Im Feed kommentieren, Fotos teilen, die nächste Strecke entdecken.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- SCHLUSS-CTA -->
   <section class="cta">
     <div class="wrap cta-inner">
       <h2>Bereit für die nächste Kurve?</h2>
-      <p>Kostenlos, läuft direkt im Browser und lässt sich als App installieren.</p>
-      <a class="btn btn-primary" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
+      <p>Kostenlos und läuft direkt im Browser.</p>
+      <a class="btn btn-primary btn-lg" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
       <p class="cta-secondary">Kennst du eine Strecke, die fehlt? <a class="text-link" href="https://app.strado.ch/strecken/neu" rel="noopener">Strecke vorschlagen</a></p>
     </div>
   </section>
@@ -211,7 +276,7 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <a href="/" class="logo"><img src="/wortmarke.svg" alt="Strado" width="107" height="27"></a>
+    <a href="/" class="logo"><span class="wortmarke">strado</span></a>
     <p class="footer-tag">Kuratierte Fahrstrecken für Auto &amp; Motorrad — gestartet in Zürich.</p>
     <div class="footer-links">
       <a href="https://app.strado.ch/" rel="noopener">App öffnen</a>
@@ -223,6 +288,130 @@
     <p class="footer-copy">© <span id="year"></span> Strado. Fahr nur so schnell, wie es sicher und erlaubt ist.</p>
   </div>
 </footer>
+
+<!-- Bei jedem Aufruf eine andere Vorzeigestrecke. Die Liste ist eine
+     Momentaufnahme der oeffentlichen, freigegebenen Strecken aus
+     public.routes der App (Stand 2026-09-07): Name, Region, Orte, Laenge,
+     Scheitelhoehe, Steigung, Kehren und ein ausgeduenntes Hoehenprofil.
+     Wer in der App eine Strecke ergaenzt oder umbenennt, zieht hier nach —
+     diese Seite hat keinen Build-Schritt, der das von selbst taete.
+
+     Die Fahrernamen und Zeiten daneben sind erfunden und bleiben es: echte
+     Nutzernamen und Fahrten gehoeren niemandem, der ihrer Veroeffentlichung
+     auf einer Werbeseite zugestimmt hat. Die Zeiten entsprechen Schnitten
+     zwischen 38 und 70 km/h — die Fusszeile bittet darum, nur so schnell zu
+     fahren, wie es sicher und erlaubt ist, da darf die Vorschau daneben
+     keine Rekordjagd zeigen.
+
+     Das Skript steht hier unten und nicht neben der Karte: ein Inline-Skript
+     wartet auf jedes noch offene Stylesheet — hier das der Google-Fonts —
+     und haelt solange das Parsen von allem darunter auf. Am Seitenende ist
+     nichts mehr da, was es aufhalten koennte. Ohne JavaScript bleibt die
+     Strecke stehen, die im Markup steht. -->
+<script>
+(function () {
+  var STRECKEN = [
+      { name: "A3 Asphalt", region: "Zürich", start: "Zürich", ziel: "Pfäffikon SZ", rund: false,
+        laenge: "33.1", hoehe: "608", steigung: "3.6%", kehren: "0",
+        profil: [[0,414],[2.53,429],[4.64,468],[7.24,501],[9.79,548],[12.7,606],[15.07,574],[18.92,560],[22.56,595],[25.29,518],[27.95,517],[30.06,482],[32.23,460],[33.12,428]],
+        fahrer: [["asphalt_zh","28:24"],["racer187","28:51"],["v6_marco","29:19"],["tempomat_87","30:02"],["sunday_cruiser","31:14"]] },
+      { name: "Binzmer Backfire", region: "Maur", start: "Maur", ziel: "Maur", rund: true,
+        laenge: "10.7", hoehe: "626", steigung: "8%", kehren: "5",
+        profil: [[0,455],[1.28,454],[2.51,444],[2.74,447],[3.8,446],[4.3,458],[5.04,514],[5.56,552],[6.49,598],[7.32,626],[8.19,609],[9.24,568],[10.25,488],[10.75,455]],
+        fahrer: [["backfire_bene","14:16"],["apex_andi","14:33"],["kurven_kim","14:52"],["twincam92","15:20"],["toeffli_tim","15:58"]] },
+      { name: "Dietlikon Dash", region: "Zürich", start: "Dietlikon", ziel: "Dietlikon", rund: true,
+        laenge: "5.7", hoehe: "477", steigung: "4.4%", kehren: "3",
+        profil: [[0,473],[0.21,477],[0.5,469],[1.06,473],[1.59,461],[2.03,454],[2.52,450],[2.96,446],[3.22,443],[3.29,442],[3.58,446],[3.89,458],[4.26,467],[4.7,470],[5,468],[5.46,472],[5.65,473]],
+        fahrer: [["dash_dani","09:00"],["kreisel_king","09:12"],["zone30_zoe","09:27"],["feierabend88","09:48"],["quartier_q","10:15"]] },
+      { name: "Greifensee Schleife", region: "Zürich", start: "Fällanden", ziel: "Fällanden", rund: true,
+        laenge: "18.7", hoehe: "462", steigung: "1.9%", kehren: "3",
+        profil: [[0,454],[1.5,447],[4.09,454],[4.64,462],[6.33,451],[8.01,438],[8.46,438],[9.51,440],[10.61,445],[11.53,445],[13.45,438],[15.36,438],[17.25,441],[18.38,447],[18.69,454]],
+        fahrer: [["seeblick_seb","23:22"],["gs_rider","23:47"],["flatline_fabi","24:11"],["reiher_r","24:46"],["sonntagstour","25:33"]] },
+      { name: "Nordwestschleife", region: "Zürich", start: "Zürich", ziel: "Zürich", rund: true,
+        laenge: "38.5", hoehe: "783", steigung: "8.9%", kehren: "3",
+        profil: [[0,414],[2.72,427],[5.04,751],[7.62,520],[11.87,531],[16.29,397],[18.67,404],[23.35,451],[26.78,471],[29.73,423],[31.8,431],[35.5,423],[36.84,408],[38.35,414],[38.5,414]],
+        fahrer: [["nordwest_nik","42:00"],["loop_lars","42:38"],["climb_chris","43:21"],["gegenwind_g","44:15"],["detour_deb","45:37"]] },
+      { name: "Zürichberg Zeit", region: "Zürich", start: "Zürich Zoo", ziel: "Zürich Zoo", rund: true,
+        laenge: "12.3", hoehe: "667", steigung: "8.8%", kehren: "5",
+        profil: [[0,629],[1.28,617],[2.4,667],[2.92,650],[3.97,569],[4.94,486],[5.96,440],[6.37,438],[7.03,435],[7.67,439],[8.74,513],[9.65,583],[10.69,594],[11.45,608],[12.27,629]],
+        fahrer: [["zberg_88","17:34"],["pass_driver","17:52"],["zooloop_zoe","18:14"],["bergziege_b","18:43"],["serpentine_s","19:21"]] },
+      { name: "Zürichsee Run", region: "Zürich", start: "Zürich", ziel: "Zürich", rund: true,
+        laenge: "65.7", hoehe: "424", steigung: "1.6%", kehren: "1",
+        profil: [[0,408],[6.35,408],[12.72,409],[13.86,422],[18.43,409],[24.15,408],[28.29,408],[34.51,408],[40.63,409],[46.79,408],[50.78,411],[56.76,412],[63.12,408],[65.72,408]],
+        fahrer: [["fahrer_zh","1:07:58"],["goldkueste_g","1:09:12"],["lakeside_lu","1:10:26"],["faehri_fab","1:12:03"],["glace_gigi","1:14:40"]] },
+  ];
+
+  var karte = document.querySelector(".app-shot");
+  if (!karte) return;
+
+  // Dieselbe Abbildung von km/m auf die Flaeche wie components/ElevationProfile.tsx.
+  var W = 600, H = 120, PT = 12, PB = 4;
+
+  function pfade(profil) {
+    var kmMax = profil[profil.length - 1][0] || 1;
+    var hoehen = profil.map(function (p) { return p[1]; });
+    var mMin = Math.min.apply(null, hoehen), mMax = Math.max.apply(null, hoehen);
+    var spanne = Math.max(mMax - mMin, 1);
+    var x = function (km) { return (km / kmMax) * W; };
+    var y = function (m) { return PT + (1 - (m - mMin) / spanne) * (H - PT - PB); };
+    var linie = profil.map(function (p, i) {
+      return (i === 0 ? "M " : "L ") + x(p[0]).toFixed(1) + " " + y(p[1]).toFixed(1);
+    }).join(" ");
+    var gipfel = profil.reduce(function (a, b) { return b[1] > a[1] ? b : a; });
+    return {
+      linie: linie,
+      flaeche: linie + " L " + W + " " + H + " L 0 " + H + " Z",
+      gx: x(gipfel[0]).toFixed(1), gy: y(gipfel[1]).toFixed(1),
+      gipfelM: gipfel[1], gipfelKm: Math.round(gipfel[0]),
+      mMin: mMin, mMax: mMax
+    };
+  }
+
+  function zeichne(s) {
+    karte.querySelector(".shot-region").textContent = s.region + (s.rund ? " · Rundfahrt" : "");
+    karte.querySelector(".shot-name").textContent = s.name;
+    karte.querySelector(".shot-orte").textContent =
+      s.rund ? "Start/Ziel: " + s.start : s.start + " → " + s.ziel;
+
+    var p = pfade(s.profil);
+    var linien = karte.querySelectorAll(".shot-profil path");
+    linien[0].setAttribute("d", p.flaeche);
+    linien[1].setAttribute("d", p.linie);
+    var gipfel = karte.querySelector(".shot-gipfel");
+    gipfel.setAttribute("cx", p.gx);
+    gipfel.setAttribute("cy", p.gy);
+
+    var fuss = karte.querySelectorAll(".shot-profil-fuss span");
+    fuss[0].textContent = p.mMin + " m";
+    fuss[1].textContent = p.gipfelM + " m bei km " + p.gipfelKm;
+    fuss[2].textContent = p.mMax + " m";
+
+    var werte = karte.querySelectorAll(".shot-werte dd");
+    werte[0].textContent = s.laenge + " km";
+    werte[1].textContent = s.hoehe + " m";
+    werte[2].textContent = s.steigung;
+    werte[3].textContent = s.kehren;
+
+    karte.querySelectorAll(".shot-bestzeiten li").forEach(function (li, i) {
+      li.querySelector(".shot-avatar").textContent = s.fahrer[i][0].charAt(0).toUpperCase();
+      li.querySelector(".shot-fahrer").textContent = s.fahrer[i][0];
+      li.querySelector(".shot-zeit").textContent = s.fahrer[i][1];
+    });
+  }
+
+  // Nicht dieselbe Strecke wie beim letzten Besuch: bei sieben Strecken
+  // faellt sonst jeder siebte Aufruf auf die vorige zurueck und die Rotation
+  // wirkt kaputt. localStorage kann fehlschlagen (privates Fenster,
+  // blockierte Speicherung), deshalb beide Zugriffe in try/catch.
+  var vorige = null;
+  try { vorige = localStorage.getItem("strado-vorzeigestrecke"); } catch (e) {}
+  var wahl = STRECKEN.filter(function (s) { return s.name !== vorige; });
+  var s = wahl[Math.floor(Math.random() * wahl.length)];
+  try { localStorage.setItem("strado-vorzeigestrecke", s.name); } catch (e) {}
+
+  zeichne(s);
+})();
+</script>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
