@@ -10,14 +10,18 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cornice — Kuratierte Fahrstrecken für Auto & Motorrad">
 <meta property="og:description" content="Strecken entdecken, per GPS aufzeichnen, in Bestenlisten je Fahrzeug vergleichen. Kostenlos, lokal gestartet in Zürich.">
-<!-- Absolute Adressen, weil Open Graph keine relativen Pfade zulaesst.
-     Zeigen auf die heute erreichbare vercel.app-Adresse, nicht auf eine
+<!-- Absolute Adresse, weil Open Graph keine relativen Pfade zulaesst. Zeigt
+     auf die heute erreichbare vercel.app-Adresse, nicht auf eine
      Wunschdomain: eine Domain, die uns nicht gehoert, koennte beim Teilen
-     ein fremdes Vorschaubild liefern. Beim Kauf einer Domain mitziehen
-     (Liste in README.md, Abschnitt "Domains"). -->
+     eine fremde Vorschau liefern. Beim Kauf einer Domain mitziehen (Liste in
+     README.md, Abschnitt "Domains"). -->
 <meta property="og:url" content="https://cornice-ch.vercel.app">
-<meta property="og:image" content="https://cornice-ch.vercel.app/og.png">
-<meta name="twitter:card" content="summary_large_image">
+<!-- og:image steht bewusst NICHT hier: es gab og.png nie im Repo, der Tag
+     zeigte auf einen 404. Ein Vorschaubild, das nicht laedt, ist schlechter
+     als keines — die meisten Plattformen zeigen dann gar keine Karte statt
+     auf Titel und Beschreibung zurueckzufallen. Wieder aufnehmen, sobald
+     eine og.png tatsaechlich im Repo liegt, zusammen mit
+     twitter:card = summary_large_image. -->
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">

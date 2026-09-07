@@ -77,7 +77,7 @@ nichts auf eine Adresse zeigt, die noch niemandem gehört:
 
 1. Domain bei Vercel als Custom Domain auf `stradoinfo` (Info-Seite) und auf
    `strado` (App) eintragen.
-2. In diesem Repo: die Links „App öffnen" in Kopf- und Fusszeile jeder Seite
+2. In diesem Repo: die Links „App öffnen“ in Kopf- und Fusszeile jeder Seite
    sowie `og:url`/`og:image` in `index.html`.
 3. In `janlampert08-dev/strado`: die Umgebungsvariable
    `NEXT_PUBLIC_LEGAL_BASE_URL` auf die neue Basis setzen (ohne sie fällt
