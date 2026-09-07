@@ -7,7 +7,9 @@ Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von 
 ```
 index.html            Startseite
 styles.css            Styling im Dark Mode der App: #0b0b0d / #f2f2f4 / #6b83ff, Inter + IBM Plex Mono
-favicon.svg           Favicon
+wortmarke.svg         Wortmarke, als <img> in Kopf- und Fusszeile jeder Seite
+favicon.svg           Favicon: das "s" der Wortmarke auf der Akzentfläche
+og.png                Freigabebild 1200x630 für og:image
 vercel.json           cleanUrls + Weiterleitungen der alten Pfade
 legal/
   index.html          Übersicht /legal
@@ -15,6 +17,20 @@ legal/
   datenschutz.html    /legal/datenschutz
   agb.html            /legal/agb
 ```
+
+## Marke
+
+Die Wortmarke ist „strado" in Familjen Grotesk Bold (SIL Open Font License)
+mit -0.03 em Laufweite, in Pfade gewandelt. Sie liegt hier als
+`wortmarke.svg` und im App-Repo als Pfaddaten in `lib/marke.ts` — beide
+stammen aus derselben Konvertierung. **Wer eine der beiden ändert, muss die
+andere mitziehen**, sonst zeigen Info-Seite und App zwei verschiedene Logos.
+
+Die Datei ist einfarbig in `#f2f2f4` angelegt, weil diese Seite nur ein
+Farbschema hat. Im App-Repo läuft dieselbe Kontur über `currentColor` und
+funktioniert dadurch in hell und dunkel.
+
+Die Marke wird kleingeschrieben gesetzt, der Fliesstext schreibt „Strado".
 
 ## Rechtstexte
 

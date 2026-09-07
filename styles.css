@@ -80,11 +80,18 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; marg
   padding-bottom: 1.05rem;
 }
 
+/* Die Wortmarke ist eine Kontur (wortmarke.svg), kein gesetzter Text — die
+   frueheren Schriftangaben haben hier nichts mehr zu tun. 27 px Bildhoehe
+   entspricht der Hoehe, die "Strado" in 1.2rem/700 belegt hat; width/height
+   stehen zusaetzlich im Markup, damit vor dem Laden kein Umbruch entsteht. */
 .logo {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  display: flex;
   flex-shrink: 0;
+}
+
+.logo img {
+  height: 27px;
+  width: auto;
 }
 
 .site-nav {
