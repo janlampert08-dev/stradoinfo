@@ -91,9 +91,15 @@ Bereits umgestellt (Stand dieses Commits):
    auflöst.
 
 Offen: `NEXT_PUBLIC_SITE_URL` in der App auf `https://app.strado.ch`
-setzen — sie steuert den Rückkehr-Link aus dem Stripe-Kundenportal und
-fällt ohne Angabe auf `http://localhost:3000` zurück. Das ist eine
-Vercel-Umgebungsvariable und lässt sich nicht im Repo erledigen.
+setzen. Sie steuert den Rückkehr-Link aus dem Stripe-Kundenportal. Das ist
+eine Vercel-Umgebungsvariable und lässt sich nicht im Repo erledigen.
+
+Die Auflösung ist inzwischen abgesichert (`lib/siteUrl.ts` im App-Repo):
+ohne diese Variable greift `VERCEL_PROJECT_PRODUCTION_URL`, die Vercel
+selbst setzt, erst danach `http://localhost:3000`. Eine vergessene
+Variable schickt zahlende Kundschaft also nicht mehr auf den eigenen
+Rechner. Der ausdrückliche Wert bleibt trotzdem der richtige: er hängt
+nicht davon ab, welche Domain Vercel gerade als Produktions-Domain führt.
 
 Der Grundsatz von früher gilt unverändert: in den Texten steht nur eine
 Adresse, die uns gehört und die antwortet. Eine Adresse, die man nicht
