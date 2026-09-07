@@ -9,6 +9,8 @@ index.html            Startseite
 styles.css            Styling im Dark Mode der App: #0b0b0d / #f2f2f4 / #6b83ff, Inter + IBM Plex Mono
 wortmarke.svg         Wortmarke, als <img> in Kopf- und Fusszeile jeder Seite
 favicon.svg           Favicon: das "s" der Wortmarke auf der Akzentfläche
+favicon.ico           dasselbe Bild als PNG-in-ICO (16/32/48 px) für Safari und ältere Browser
+apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
 og.png                Freigabebild 1200x630 für og:image
 vercel.json           cleanUrls + Weiterleitungen der alten Pfade
 legal/
@@ -45,34 +47,22 @@ nebeneinanderstehende Vertragswerke wären ein Widerspruchsrisiko. `vercel.json`
 leitet den alten Pfad dauerhaft auf `/legal/agb` um, ebenso die alten Pfade von
 Impressum und Datenschutz.
 
-### Was noch fehlt
+### Stand der Angaben
 
-Die orange markierten Stellen (CSS-Klasse `.todo`) sind **Pflichtangaben**, die
-nicht erfunden werden konnten:
+Die Pflichtangaben sind seit dem 7. September 2026 eingesetzt (Stand-Datum
+aller drei Texte): Anbieter ist Jan Lampert, Einzelunternehmen ohne
+Handelsregistereintrag, c/o Softsite AG, Leutschenbachstrasse 45, 8050 Zürich;
+Kontakt ausschliesslich per E-Mail; Gerichtsstand Zürich (AGB Ziff. 16.4).
+Eine UID- oder MWST-Nummer gibt es nicht, weil keine Steuerpflicht besteht —
+der frühere Abschnitt „Register und Steuern" im Impressum ist deshalb
+gestrichen, nicht leer gelassen. Die Entwurfsbanner und die orange markierten
+Platzhalter sind mit demselben Stand entfernt.
 
-| Angabe | Seite |
-| --- | --- |
-| Firmenname und Rechtsform | Impressum, Datenschutz Ziff. 1, AGB Ziff. 1.2 |
-| Strasse, Hausnummer, PLZ, Ort | dieselben Stellen |
-| Telefonnummer | Impressum (formal optional, für TWINT empfohlen) |
-| Vertretungsberechtigte Person | Impressum |
-| UID / Handelsregisternummer | Impressum |
-| MWST-Nummer | Impressum — Absatz streichen, solange keine Steuerpflicht besteht |
-| Gerichtsstand | AGB Ziff. 16.4 |
-
-Ohne diese Angaben gibt es **keine TWINT-Freischaltung über Stripe** und damit
-kein sinnvolles Schweizer Zahlungsmittel für das Premium-Abo. Art. 3 Abs. 1
-lit. s UWG verlangt sie ohnehin.
-
-Beide Entwurfsbanner (`.legal-draft`) sind ebenfalls zu entfernen, sobald die
-Texte anwaltlich geprüft und die Angaben eingesetzt sind. Vorher im ganzen
-Verzeichnis nach `class="todo"` und `legal-draft` suchen.
-
-### Vor dem Premium-Start ebenfalls anpassen
-
-`index.html` bewirbt Strado an drei Stellen als „kostenlos" (Meta-Beschreibung,
-Hero-Notiz, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
-Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
+Seit demselben Datum beschreiben die AGB das Premium-Abo, wie es verkauft
+wird: Eigene Strecken sind eine Premium-Funktion (Ziff. 3.1/3.2), der
+Gründerpreis wird nicht mehr angeboten und gilt nur noch für davor
+abgeschlossene Abos (Ziff. 4.3). `index.html` wirbt entsprechend nicht mehr
+mit „kostenlos", sondern mit „gratis starten, eigene Strecken mit Premium".
 
 ## Domains
 

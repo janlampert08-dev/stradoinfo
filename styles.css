@@ -594,39 +594,6 @@ section h2 {
 .legal-note p { font-size: 0.9rem; margin: 0 0 0.4rem; }
 .legal-note p:last-child { margin-bottom: 0; }
 
-/* Entwurfs-Banner. Bewusst laut: ein ungeprüfter Rechtstext, der wie ein
-   geprüfter aussieht, ist schlimmer als gar keiner. */
-.legal-draft {
-  border: 1px solid #d98a2b;
-  /* Statischer Vorgabewert zuerst: ein Browser ohne color-mix() verwirft die
-     Zeile darunter und stünde sonst ganz ohne Warnhintergrund da — bei einem
-     Kasten, dessen einziger Zweck das Warnen ist. */
-  background: rgba(217, 138, 43, 0.12);
-  background: color-mix(in oklch, #d98a2b 12%, var(--background));
-  border-radius: var(--radius-md);
-  padding: 1.1rem 1.25rem;
-  margin: 0 0 2.25rem;
-}
-.legal-draft strong { color: #f0a94a; }
-.legal-draft p { font-size: 0.9rem; margin: 0 0 0.5rem; }
-.legal-draft p:last-child { margin-bottom: 0; }
-
-/* Noch nicht eingesetzte Angabe (Firma, Adresse, Gerichtsstand). Sichtbar
-   markiert, damit sie beim Korrekturlesen nicht durchrutscht. */
-.todo {
-  display: inline-block;
-  /* Wie oben: ohne Vorgabewert wäre eine offene Pflichtangabe nicht mehr
-     als solche zu erkennen. */
-  background: rgba(217, 138, 43, 0.22);
-  background: color-mix(in oklch, #d98a2b 22%, var(--background));
-  border: 1px dashed #d98a2b;
-  border-radius: 0.3rem;
-  padding: 0 0.35rem;
-  color: #f0a94a;
-  font-size: 0.9em;
-  font-weight: 600;
-}
-
 /* Tabellen (Preise, Auftragsbearbeiter, Aufbewahrungsfristen). Der Wrapper
    scrollt, nicht die Seite. */
 .legal-table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
