@@ -1,4 +1,4 @@
-# cornice.ch
+# strado.ch
 
 Marketing-Homepage und Rechtstexte für Cornice — kuratierte Fahrstrecken für Auto und Motorrad.
 
