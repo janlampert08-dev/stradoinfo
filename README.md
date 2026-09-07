@@ -1,6 +1,6 @@
 # strado.ch
 
-Marketing-Homepage und Rechtstexte für Cornice — kuratierte Fahrstrecken für Auto und Motorrad.
+Marketing-Homepage und Rechtstexte für Strado — kuratierte Fahrstrecken für Auto und Motorrad.
 
 Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von der eigentlichen App (separates Repo/Deploy) läuft.
 
@@ -54,7 +54,7 @@ Verzeichnis nach `class="todo"` und `legal-draft` suchen.
 
 ### Vor dem Premium-Start ebenfalls anpassen
 
-`index.html` bewirbt Cornice an drei Stellen als „kostenlos" (Meta-Beschreibung,
+`index.html` bewirbt Strado an drei Stellen als „kostenlos" (Meta-Beschreibung,
 Hero-Notiz, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
 Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
 
