@@ -12,17 +12,24 @@
 <meta property="og:description" content="Strecken entdecken, per GPS aufzeichnen, in Bestenlisten je Fahrzeug vergleichen. Kostenlos, lokal gestartet in Zürich.">
 <!-- Absolute Adresse, weil Open Graph keine relativen Pfade zulaesst.
      strado.ch ist registriert und liefert diese Seite aus, deshalb steht
-     hier die eigene Domain statt der vercel.app-Adresse. Die Bedingung von
+     hier die eigene Domain statt der vercel.app-Adresse. Die Apex-Form
+     ohne www, wie ueberall im Repo — siehe README, Abschnitt "Domains".
+     Die Bedingung von
      frueher bleibt gueltig: hier gehoert nur eine Adresse hinein, die uns
      gehoert und die tatsaechlich antwortet — eine fremde Domain koennte
      beim Teilen eine fremde Vorschau liefern. -->
 <meta property="og:url" content="https://strado.ch">
-<!-- og:image steht bewusst NICHT hier: es gab og.png nie im Repo, der Tag
-     zeigte auf einen 404. Ein Vorschaubild, das nicht laedt, ist schlechter
-     als keines — die meisten Plattformen zeigen dann gar keine Karte statt
-     auf Titel und Beschreibung zurueckzufallen. Wieder aufnehmen, sobald
-     eine og.png tatsaechlich im Repo liegt, zusammen mit
-     twitter:card = summary_large_image. -->
+<!-- og.png liegt jetzt im Repo (1200x630, Wortmarke auf dem dunklen Grund
+     der Seite), deshalb steht der Tag wieder hier — zusammen mit
+     twitter:card, ohne die X keine grosse Karte zeigt. Absolute Adresse,
+     weil Open Graph keine relativen Pfade zulaesst. Wer die Datei
+     umbenennt oder entfernt, muss diese Zeilen mitnehmen: ein
+     Vorschaubild, das 404 liefert, ist schlechter als gar keines. -->
+<meta property="og:image" content="https://strado.ch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Strado — kuratierte Kurven- und Passstrecken in der Schweiz">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +41,7 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="/" class="logo"><span>Strado</span></a>
+    <a href="/" class="logo"><img src="/wortmarke.svg" alt="Strado" width="107" height="27"></a>
     <nav class="site-nav">
       <a href="#funktionen"><span>Funktionen</span></a>
       <a href="#so-gehts"><span>So geht's</span></a>
@@ -204,7 +211,7 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <a href="/" class="logo"><span>Strado</span></a>
+    <a href="/" class="logo"><img src="/wortmarke.svg" alt="Strado" width="107" height="27"></a>
     <p class="footer-tag">Kuratierte Fahrstrecken für Auto &amp; Motorrad — gestartet in Zürich.</p>
     <div class="footer-links">
       <a href="https://app.strado.ch/" rel="noopener">App öffnen</a>
