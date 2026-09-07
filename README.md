@@ -1,6 +1,6 @@
 # strado.ch
 
-Marketing-Homepage und Rechtstexte für Cornice — kuratierte Fahrstrecken für Auto und Motorrad.
+Marketing-Homepage und Rechtstexte für Strado — kuratierte Fahrstrecken für Auto und Motorrad.
 
 Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von der eigentlichen App (separates Repo/Deploy) läuft.
 
@@ -54,40 +54,57 @@ Verzeichnis nach `class="todo"` und `legal-draft` suchen.
 
 ### Vor dem Premium-Start ebenfalls anpassen
 
-`index.html` bewirbt Cornice an drei Stellen als „kostenlos" (Meta-Beschreibung,
+`index.html` bewirbt Strado an drei Stellen als „kostenlos" (Meta-Beschreibung,
 Hero-Notiz, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
 Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
 
 ## Domains
 
-**Es ist noch keine eigene Domain registriert.** Massgebend sind daher
-ausschliesslich die vercel.app-Adressen:
+`strado.ch` ist registriert und ausgeliefert. Massgebend sind die eigenen
+Adressen; die vercel.app-Adressen bleiben nur als Deploy-interne Namen
+bestehen und gehören in keinen Link und in keinen Rechtstext mehr.
 
-| Was | Heute erreichbar unter |
+| Was | Erreichbar unter |
 | --- | --- |
-| Info-Homepage und Rechtstexte | `cornice-ch.vercel.app` |
-| App | `cornice-orcin.vercel.app` |
+| Info-Homepage und Rechtstexte (dieses Repo) | `strado.ch`, Rechtstexte unter `/legal/…` |
+| App (`janlampert08-dev/strado`) | `app.strado.ch` |
 
-Geplant ist die Aufteilung Info-Homepage auf der Hauptdomain, Rechtstexte
-unter `/legal/…` und die App auf einer `app.`-Subdomain. Welche Domain das
-wird, ist offen.
+`strado.ch` antwortet mit einer permanenten Weiterleitung (308) auf
+`www.strado.ch`, wo die Seite tatsächlich ausgeliefert wird — der Pfad
+bleibt dabei erhalten, `strado.ch/legal/agb` landet also auf
+`www.strado.ch/legal/agb`. Verlinkt wird trotzdem überall die Apex-Form
+`strado.ch`: sie ist die Marke und die Adresse, die in den Rechtstexten
+steht. Wer die Weiterleitung sparen will, stellt bei Vercel die
+Apex-Domain als primäre Domain ein — dann entfällt der Sprung, ohne dass
+ein Link im Repo geändert werden muss.
 
-Was beim Kauf einer Domain anzupassen ist — die Liste ist vollständig, damit
-nichts auf eine Adresse zeigt, die noch niemandem gehört:
+Bereits umgestellt (Stand dieses Commits):
 
-1. Domain bei Vercel als Custom Domain auf `stradoinfo` (Info-Seite) und auf
-   `strado` (App) eintragen.
-2. In diesem Repo: die Links „App öffnen“ in Kopf- und Fusszeile jeder Seite
-   sowie `og:url`/`og:image` in `index.html`.
-3. In `janlampert08-dev/strado`: die Umgebungsvariable
-   `NEXT_PUBLIC_LEGAL_BASE_URL` auf die neue Basis setzen (ohne sie fällt
-   `LEGAL_URLS` auf `cornice-ch.vercel.app` zurück, was weiterhin
-   funktioniert) und `NEXT_PUBLIC_SITE_URL` mitziehen.
-4. In den Rechtstexten: die in AGB Ziff. 1.1 genannte Adresse.
+1. Custom Domains bei Vercel: `strado.ch`/`www.strado.ch` auf `stradoinfo`,
+   `app.strado.ch` auf `strado`.
+2. In diesem Repo: alle Links „App öffnen“ in Kopf- und Fusszeile jeder
+   Seite, der CTA-Block in `index.html` und `og:url`.
+3. In den Rechtstexten: die in AGB Ziff. 1.1 genannten Adressen.
+4. In `janlampert08-dev/strado`: `LEGAL_BASE_URL_STANDARD` in
+   `lib/constants.ts` zeigt jetzt auf `https://strado.ch`, sodass
+   `LEGAL_URLS` auch ohne gesetzte `NEXT_PUBLIC_LEGAL_BASE_URL` korrekt
+   auflöst.
 
-Bis dahin steht in den Texten keine Wunschdomain: eine Adresse, die man
-nicht besitzt, kann jederzeit jemand anderem gehören — und sie stünde dann
-unter der Überschrift „Impressum".
+Offen: `NEXT_PUBLIC_SITE_URL` in der App auf `https://app.strado.ch`
+setzen. Sie steuert den Rückkehr-Link aus dem Stripe-Kundenportal. Das ist
+eine Vercel-Umgebungsvariable und lässt sich nicht im Repo erledigen.
+
+Die Auflösung ist inzwischen abgesichert (`lib/siteUrl.ts` im App-Repo):
+ohne diese Variable greift `VERCEL_PROJECT_PRODUCTION_URL`, die Vercel
+selbst setzt, erst danach `http://localhost:3000`. Eine vergessene
+Variable schickt zahlende Kundschaft also nicht mehr auf den eigenen
+Rechner. Der ausdrückliche Wert bleibt trotzdem der richtige: er hängt
+nicht davon ab, welche Domain Vercel gerade als Produktions-Domain führt.
+
+Der Grundsatz von früher gilt unverändert: in den Texten steht nur eine
+Adresse, die uns gehört und die antwortet. Eine Adresse, die man nicht
+besitzt, kann jederzeit jemand anderem gehören — und sie stünde dann unter
+der Überschrift „Impressum".
 
 ## Lokal ansehen
 

@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cornice — Kuratierte Fahrstrecken für Auto &amp; Motorrad</title>
-<meta name="description" content="Cornice: kuratierte Pässe und Kurvenstrecken entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen — inklusive Feed, Höhenprofil, Wetter und Offline-Modus. Kostenlos, lokal gestartet in Zürich.">
+<title>Strado — Kuratierte Fahrstrecken für Auto &amp; Motorrad</title>
+<meta name="description" content="Strado: kuratierte Pässe und Kurvenstrecken entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen — inklusive Feed, Höhenprofil, Wetter und Offline-Modus. Kostenlos, lokal gestartet in Zürich.">
 <meta name="theme-color" content="#0B0B0D">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Cornice — Kuratierte Fahrstrecken für Auto & Motorrad">
+<meta property="og:title" content="Strado — Kuratierte Fahrstrecken für Auto & Motorrad">
 <meta property="og:description" content="Strecken entdecken, per GPS aufzeichnen, in Bestenlisten je Fahrzeug vergleichen. Kostenlos, lokal gestartet in Zürich.">
-<!-- Absolute Adresse, weil Open Graph keine relativen Pfade zulaesst. Zeigt
-     auf die heute erreichbare vercel.app-Adresse, nicht auf eine
-     Wunschdomain: eine Domain, die uns nicht gehoert, koennte beim Teilen
-     eine fremde Vorschau liefern. Beim Kauf einer Domain mitziehen (Liste in
-     README.md, Abschnitt "Domains"). -->
-<meta property="og:url" content="https://cornice-ch.vercel.app">
+<!-- Absolute Adresse, weil Open Graph keine relativen Pfade zulaesst.
+     strado.ch ist registriert und liefert diese Seite aus, deshalb steht
+     hier die eigene Domain statt der vercel.app-Adresse. Die Bedingung von
+     frueher bleibt gueltig: hier gehoert nur eine Adresse hinein, die uns
+     gehoert und die tatsaechlich antwortet — eine fremde Domain koennte
+     beim Teilen eine fremde Vorschau liefern. -->
+<meta property="og:url" content="https://strado.ch">
 <!-- og:image steht bewusst NICHT hier: es gab og.png nie im Repo, der Tag
      zeigte auf einen 404. Ein Vorschaubild, das nicht laedt, ist schlechter
      als keines — die meisten Plattformen zeigen dann gar keine Karte statt
@@ -33,12 +34,12 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="/" class="logo"><span>Cornice</span></a>
+    <a href="/" class="logo"><span>Strado</span></a>
     <nav class="site-nav">
       <a href="#funktionen"><span>Funktionen</span></a>
       <a href="#so-gehts"><span>So geht's</span></a>
     </nav>
-    <a class="btn btn-primary btn-small" href="https://cornice-orcin.vercel.app/" rel="noopener">
+    <a class="btn btn-primary btn-small" href="https://app.strado.ch/" rel="noopener">
       App öffnen
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="13" height="13">
         <path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5"/>
@@ -55,12 +56,12 @@
       <div class="hero-copy">
         <h1>Strecke finden.<br>Fahren. <span class="accent-text">Vergleichen.</span></h1>
         <p class="hero-sub">
-          Cornice sammelt kuratierte Pässe und Kurvenstrecken rund um Zürich.
+          Strado sammelt kuratierte Pässe und Kurvenstrecken rund um Zürich.
           Strecke aussuchen, per GPS aufzeichnen lassen und deine Zeit direkt in
           der Bestenliste mit anderen Fahrzeugen vergleichen.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/" rel="noopener">Jetzt Strecken entdecken</a>
+          <a class="btn btn-primary" href="https://app.strado.ch/" rel="noopener">Jetzt Strecken entdecken</a>
           <a class="text-link" href="#funktionen">Funktionen ansehen</a>
         </div>
         <p class="hero-note">Kostenlos · Läuft im Browser · Als App installierbar</p>
@@ -115,7 +116,7 @@
       <p class="eyebrow">Die App</p>
       <h2 style="margin-top: 0.9rem;">Alles für deine nächste Ausfahrt</h2>
       <p class="section-lede">
-        Cornice ist mehr als eine Streckenliste — von der Aufzeichnung bis zur
+        Strado ist mehr als eine Streckenliste — von der Aufzeichnung bis zur
         Bestenliste ist alles in einer App.
       </p>
 
@@ -129,7 +130,7 @@
         <div class="feature">
           <div class="feature-icon-badge"><svg class="feature-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 15c2-1 3-3 3-5s-1-4 1-5 4 1 3 3-3 2-2 4 3 2 3 4-2 3-4 2-2-2-1-3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Live-Tracking &amp; automatische Rundenerkennung</h3>
-          <p>Fahrzeug wählen, Tracking starten — Ankunft wird automatisch erkannt. Auch bei freien Fahrten ordnet Cornice bekannte Streckenabschnitte automatisch zu.</p>
+          <p>Fahrzeug wählen, Tracking starten — Ankunft wird automatisch erkannt. Auch bei freien Fahrten ordnet Strado bekannte Streckenabschnitte automatisch zu.</p>
         </div>
 
         <div class="feature">
@@ -194,8 +195,8 @@
     <div class="wrap cta-inner">
       <h2>Bereit für die nächste Kurve?</h2>
       <p>Kostenlos, läuft direkt im Browser und lässt sich als App installieren.</p>
-      <a class="btn btn-primary" href="https://cornice-orcin.vercel.app/" rel="noopener">App öffnen</a>
-      <p class="cta-secondary">Kennst du eine Strecke, die fehlt? <a class="text-link" href="https://cornice-orcin.vercel.app/strecken/neu" rel="noopener">Strecke vorschlagen</a></p>
+      <a class="btn btn-primary" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
+      <p class="cta-secondary">Kennst du eine Strecke, die fehlt? <a class="text-link" href="https://app.strado.ch/strecken/neu" rel="noopener">Strecke vorschlagen</a></p>
     </div>
   </section>
 
@@ -203,16 +204,16 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <a href="/" class="logo"><span>Cornice</span></a>
+    <a href="/" class="logo"><span>Strado</span></a>
     <p class="footer-tag">Kuratierte Fahrstrecken für Auto &amp; Motorrad — gestartet in Zürich.</p>
     <div class="footer-links">
-      <a href="https://cornice-orcin.vercel.app/" rel="noopener">App öffnen</a>
-      <a href="mailto:lampert.jan@icloud.com">Kontakt</a>
+      <a href="https://app.strado.ch/" rel="noopener">App öffnen</a>
+      <a href="mailto:contact@strado.ch">Kontakt</a>
       <a href="/legal/impressum">Impressum</a>
       <a href="/legal/datenschutz">Datenschutz</a>
       <a href="/legal/agb">AGB</a>
     </div>
-    <p class="footer-copy">© <span id="year"></span> Cornice. Fahr nur so schnell, wie es sicher und erlaubt ist.</p>
+    <p class="footer-copy">© <span id="year"></span> Strado. Fahr nur so schnell, wie es sicher und erlaubt ist.</p>
   </div>
 </footer>
 
