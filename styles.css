@@ -52,6 +52,12 @@
 
   --max: 1120px;
 
+  /* Hoehe des klebrigen Headers. Das Skript am Seitenende misst sie und
+     ueberschreibt den Wert; dieser Standard entspricht der jetzigen
+     Kopfzeile (12 px Polsterung oben und unten, 32 px Inhalt, 1 px Linie)
+     und haelt den Hero auch ohne JavaScript bildschirmfuellend. */
+  --header-h: 57px;
+
   color-scheme: light;
 }
 
@@ -123,6 +129,9 @@ h1, h2, h3 {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    /* Ohne das liefe eine Endlos-Animation (der Pfeil im Scroll-Hinweis)
+       nicht ruhig, sondern unsichtbar schnell weiter. */
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
@@ -240,6 +249,7 @@ h1, h2, h3 {
 
 .btn:focus-visible,
 .text-link:focus-visible,
+.scroll-cue:focus-visible,
 .site-nav a:focus-visible,
 .footer-links a:focus-visible,
 .logo:focus-visible {
@@ -298,6 +308,10 @@ h1, h2, h3 {
 /* ---------- Abschnitte ---------- */
 
 section { padding: 4rem 0; }
+
+/* Wie bei den Rechtstexten: ein Sprung auf #funktionen oder #so-gehts soll
+   nicht unter dem klebrigen Header landen. */
+section[id] { scroll-margin-top: 4.5rem; }
 
 @media (min-width: 768px) {
   section { padding: 5rem 0; }
@@ -367,26 +381,87 @@ section h2 {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
-/* Die drei Merkmale unter dem CTA als Chips — dieselbe Form wie die
-   Filter-Chips der App (Haarlinie, radius-sm, text-xs). */
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
+/* ---- Scroll-Hinweis ----
+ *
+ * Ein Link wie jeder andere (er springt zu #funktionen), nur mit einem
+ * Pfeil, der sich bewegt. Auf dem Handy sitzt er am unteren Rand des
+ * bildschirmfuellenden Heros und ist dort das einzige Zeichen, dass unter
+ * der Kante noch etwas kommt. Die Bewegung ist klein und langsam: sie soll
+ * den Blick fuehren, nicht um Aufmerksamkeit betteln.
+ */
+.scroll-cue {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
   gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
 }
 
-.hero-badges li {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 0.25rem 0.625rem;
-  font-size: 0.75rem;
-  color: var(--color-muted);
+.scroll-cue:hover { color: var(--color-foreground); }
+
+.scroll-cue svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  animation: scroll-cue-pfeil 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-pfeil {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
+  30% { transform: translateY(0.3rem); opacity: 1; }
+}
+
+/* ---- Bildschirmfuellender Hero auf dem Handy ----
+ *
+ * Bis 980 px steht die Produktvorschau unter dem Text (darueber liegen beide
+ * nebeneinander, da ergaebe die Rechnung keinen Sinn). In dieser Breite soll
+ * der Textteil allein den sichtbaren Bereich fuellen: die Vorschau der
+ * Streckenseite taucht erst auf, wenn jemand scrollt.
+ *
+ * Abgezogen wird die Hoehe des klebrigen Headers — er steht im Fluss, nicht
+ * ueber dem Inhalt, also ist der freie Bereich um genau so viel kleiner.
+ * --header-h misst das Skript am Seitenende; der Standardwert hier ist die
+ * gemessene Hoehe der jetzigen Kopfzeile und traegt die Seite auch ohne
+ * JavaScript.
+ *
+ * dvh statt vh, weil iOS Safari die Adressleiste beim Scrollen einklappt:
+ * mit vh waere der Hero anfangs zu hoch und die Vorschau lugte hervor. Die
+ * vh-Zeile davor bleibt als Rueckfall fuer Browser ohne dvh stehen.
+ *
+ * min-height, nicht height: auf einem quer gehaltenen Handy ist der Text
+ * hoeher als der Bildschirm, dann waechst der Block mit, statt zu ueberlaufen.
+ */
+@media (max-width: 979.98px) {
+  .hero { padding-top: 0; }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100dvh - var(--header-h));
+    /* Polsterung statt Aussenabstand: sie zaehlt in die Mindesthoehe hinein
+       (border-box) und haelt den Text auch dann von der Kopfzeile weg, wenn
+       die automatischen Abstaende unten auf 0 fallen — quer gehaltenes
+       Handy, sehr grosse Schrift. */
+    padding-top: 2rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Zwei automatische Aussenabstaende teilen den freien Platz: der Text sitzt
+     in der Mitte, der Scroll-Hinweis am unteren Rand. Reicht der Platz
+     nicht, fallen beide auf 0 zurueck und nichts ueberlappt — der Abstand
+     zum Knopf bleibt dann als Polsterung erhalten. */
+  .hero-copy h1 { margin-top: auto; }
+
+  .hero-copy .scroll-cue {
+    margin-top: auto;
+    padding-top: 1.5rem;
+  }
 }
 
 /* ---------- Produktvorschau im Hero ----------

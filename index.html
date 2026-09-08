@@ -78,13 +78,19 @@
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="https://app.strado.ch/" rel="noopener">Jetzt Strecken entdecken</a>
-          <a class="text-link" href="#funktionen">Funktionen ansehen</a>
         </div>
-        <ul class="hero-badges">
-          <li>Gratis starten</li>
-          <li>Premium optional</li>
-          <li>Läuft im Browser</li>
-        </ul>
+
+        <!-- Auf dem Handy fuellt der Hero den ganzen Bildschirm, alles Weitere
+             liegt unter der Kante. Damit das nicht wie das Ende der Seite
+             aussieht, steht hier ein Hinweis mit einem sich bewegenden Pfeil
+             am unteren Rand — er ist zugleich der Sprung zu den Funktionen,
+             der frueher als Textlink neben dem CTA stand. Der Pfeil steht
+             still, sobald das System weniger Bewegung verlangt (siehe die
+             prefers-reduced-motion-Regel in styles.css). -->
+        <a class="scroll-cue" href="#funktionen">
+          <span>Funktionen entdecken</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
       </div>
 
       <!-- Ausschnitt aus der App: das Detail-Panel einer Streckenseite, in der
@@ -477,6 +483,30 @@
       // vollstaendige Strecke. Ein Fehler hier darf keine Konsole vollmuellen
       // und schon gar nicht die Seite aufhalten.
     });
+})();
+</script>
+
+<!-- Die tatsaechliche Hoehe des klebrigen Headers als --header-h, damit der
+     Hero auf dem Handy exakt den Rest des Bildschirms fuellt (siehe
+     styles.css, "Bildschirmfuellender Hero"). In styles.css steht ein
+     Standardwert, der ohne dieses Skript traegt; gemessen wird trotzdem,
+     weil eine umbrechende Kopfzeile — laengeres Wort im Knopf, sehr grosse
+     Schrift — sonst ein paar Pixel der Vorschau hervorlugen liesse. -->
+<script>
+(function () {
+  var kopf = document.querySelector(".site-header");
+  if (!kopf) return;
+
+  function messen() {
+    document.documentElement.style.setProperty("--header-h", kopf.offsetHeight + "px");
+  }
+
+  messen();
+  if (typeof ResizeObserver === "function") {
+    new ResizeObserver(messen).observe(kopf);
+  } else {
+    window.addEventListener("resize", messen);
+  }
 })();
 </script>
 
