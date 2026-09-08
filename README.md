@@ -9,6 +9,8 @@ index.html            Startseite
 styles.css            Designsystem, gespiegelt aus app/globals.css des App-Repos
 wortmarke.svg         Wortmarke, als CSS-Maske in Kopf- und Fusszeile jeder Seite
 favicon.svg           Favicon: das "s" der Wortmarke auf der Akzentfläche
+favicon.ico           dasselbe Bild als PNG-in-ICO (16/32/48 px) für Safari und ältere Browser
+apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
 og.png                Freigabebild 1200x630 für og:image
 vercel.json           cleanUrls + Weiterleitungen der alten Pfade
 legal/
@@ -38,13 +40,15 @@ gleiche Werte. **Wer sie dort ändert, sollte hier mitziehen.**
 | Akzent-Knopf „Strecke starten“ darin | `components/GefahrenSection.tsx` |
 | Symbole (24er-viewBox, Kontur, `stroke-width` 2) | Lucide, wie `lucide-react` in der App |
 
-Zwei bewusste Abweichungen, beide in `styles.css` kommentiert:
+Eine bewusste Abweichung, in `styles.css` kommentiert: `--text-hero` und
+`.btn-lg` gibt es in der App nicht. Ein Hero steht allein auf leerer Fläche
+statt in einer App-Oberfläche und trägt eine Stufe mehr.
 
-- `--text-hero` und `.btn-lg` gibt es in der App nicht. Ein Hero steht allein
-  auf leerer Fläche statt in einer App-Oberfläche und trägt eine Stufe mehr.
-- `--color-warning` wird im dunklen Schema aufgehellt. Die App tut das nicht;
-  auf `#0b0b0d` wäre `#b45309` für die Entwurfs-Warnungen der Rechtstexte zu
-  dunkel, deren einziger Zweck das Auffallen ist.
+Die frühere zweite Abweichung — ein im dunklen Schema aufgehelltes
+`--color-warning` — ist entfallen: sie trug allein die Entwurfsbanner und die
+orange markierten Platzhalter der Rechtstexte, und beide sind seit dem
+7. September 2026 weg. Wer ein Warnelement wieder braucht, holt sich den Token
+aus `app/globals.css` des App-Repos zurück.
 
 ### Hell und Dunkel
 
@@ -87,34 +91,26 @@ nebeneinanderstehende Vertragswerke wären ein Widerspruchsrisiko. `vercel.json`
 leitet den alten Pfad dauerhaft auf `/legal/agb` um, ebenso die alten Pfade von
 Impressum und Datenschutz.
 
-### Was noch fehlt
+### Stand der Angaben
 
-Die orange markierten Stellen (CSS-Klasse `.todo`) sind **Pflichtangaben**, die
-nicht erfunden werden konnten:
+Die Pflichtangaben sind seit dem 7. September 2026 eingesetzt (Stand-Datum
+aller drei Texte): Anbieter ist Jan Lampert, Einzelunternehmen ohne
+Handelsregistereintrag, c/o Softsite AG, Leutschenbachstrasse 45, 8050 Zürich;
+Kontakt ausschliesslich per E-Mail; Gerichtsstand Zürich (AGB Ziff. 16.4).
+Zwei Angaben entfallen getrennt voneinander: Es besteht keine
+MWST-Pflicht (Umsatz unter CHF 100'000), also gibt es keine MWST-Nummer; und
+das Einzelunternehmen ist weder im Handelsregister eingetragen noch führt es
+eine UID. Der frühere Abschnitt „Register und Steuern" im Impressum ist
+deshalb gestrichen, nicht leer gelassen. Die Entwurfsbanner und die orange markierten
+Platzhalter sind mit demselben Stand entfernt.
 
-| Angabe | Seite |
-| --- | --- |
-| Firmenname und Rechtsform | Impressum, Datenschutz Ziff. 1, AGB Ziff. 1.2 |
-| Strasse, Hausnummer, PLZ, Ort | dieselben Stellen |
-| Telefonnummer | Impressum (formal optional, für TWINT empfohlen) |
-| Vertretungsberechtigte Person | Impressum |
-| UID / Handelsregisternummer | Impressum |
-| MWST-Nummer | Impressum — Absatz streichen, solange keine Steuerpflicht besteht |
-| Gerichtsstand | AGB Ziff. 16.4 |
-
-Ohne diese Angaben gibt es **keine TWINT-Freischaltung über Stripe** und damit
-kein sinnvolles Schweizer Zahlungsmittel für das Premium-Abo. Art. 3 Abs. 1
-lit. s UWG verlangt sie ohnehin.
-
-Beide Entwurfsbanner (`.legal-draft`) sind ebenfalls zu entfernen, sobald die
-Texte anwaltlich geprüft und die Angaben eingesetzt sind. Vorher im ganzen
-Verzeichnis nach `class="todo"` und `legal-draft` suchen.
-
-### Vor dem Premium-Start ebenfalls anpassen
-
-`index.html` bewirbt Strado an drei Stellen als „kostenlos" (Meta-Beschreibung,
-Hero-Merkmale, Schluss-CTA). Das stimmt, solange kein Abo verkauft wird — mit dem
-Verkaufsstart wird daraus eine Freemium-Aussage und muss umformuliert werden.
+Seit demselben Datum beschreiben die AGB das Premium-Abo, wie es verkauft
+wird: Eigene Strecken sind eine Premium-Funktion (Ziff. 3.1/3.2), der
+Gründerpreis wird nicht mehr angeboten und gilt nur noch für davor
+abgeschlossene Abos (Ziff. 4.3). `index.html` wirbt entsprechend nicht mehr
+mit „kostenlos", sondern mit Gratis-Einstieg und eigenen Strecken als
+Premium-Funktion („Gratis loslegen, eigene Strecken mit Premium" in der
+Meta-Beschreibung, sinngemäss in den Hero-Merkmalen und im Schluss-CTA).
 
 ## Domains
 
