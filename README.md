@@ -6,8 +6,8 @@ Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von 
 
 ```
 index.html            Startseite
-styles.css            Styling im Dark Mode der App: #0b0b0d / #f2f2f4 / #6b83ff, Inter + IBM Plex Mono
-wortmarke.svg         Wortmarke, als <img> in Kopf- und Fusszeile jeder Seite
+styles.css            Designsystem, gespiegelt aus app/globals.css des App-Repos
+wortmarke.svg         Wortmarke, als CSS-Maske in Kopf- und Fusszeile jeder Seite
 favicon.svg           Favicon: das "s" der Wortmarke auf der Akzentfläche
 favicon.ico           dasselbe Bild als PNG-in-ICO (16/32/48 px) für Safari und ältere Browser
 apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
@@ -20,6 +20,47 @@ legal/
   agb.html            /legal/agb
 ```
 
+## Gestaltung
+
+Die Seite verwendet dasselbe Designsystem wie die App, damit der Sprung von
+`strado.ch` nach `app.strado.ch` nicht wie ein Wechsel zwischen zwei Produkten
+wirkt. Die Tokens am Kopf von `styles.css` sind eine Kopie derjenigen aus
+`app/globals.css` im App-Repo (`janlampert08-dev/strado`) — gleiche Namen,
+gleiche Werte. **Wer sie dort ändert, sollte hier mitziehen.**
+
+| Was | Übernommen aus |
+| --- | --- |
+| Farben, Radien, Schatten, Übergänge, Typo-Skala | `app/globals.css` |
+| Knöpfe (`.btn-primary`, `.btn-secondary`, Grösse `sm`) | `components/ui/Button.tsx` |
+| Flächen (`.card`: Haarlinie, `--radius-lg`, kein Verlauf) | `components/ui/Card.tsx` |
+| Kopfzeile (klebend, transluzent, `blur(24px)`) | `components/Header.tsx` |
+| Streckendetail in der Hero-Vorschau | `app/strecken/[id]/page.tsx` |
+| Höhenprofil darin | `components/ElevationProfile.tsx` |
+| Bestenliste darin | `components/RouteLeaderboardPreview.tsx` |
+| Akzent-Knopf „Strecke starten“ darin | `components/GefahrenSection.tsx` |
+| Symbole (24er-viewBox, Kontur, `stroke-width` 2) | Lucide, wie `lucide-react` in der App |
+
+Eine bewusste Abweichung, in `styles.css` kommentiert: `--text-hero` und
+`.btn-lg` gibt es in der App nicht. Ein Hero steht allein auf leerer Fläche
+statt in einer App-Oberfläche und trägt eine Stufe mehr.
+
+Die frühere zweite Abweichung — ein im dunklen Schema aufgehelltes
+`--color-warning` — ist entfallen: sie trug allein die Entwurfsbanner und die
+orange markierten Platzhalter der Rechtstexte, und beide sind seit dem
+7. September 2026 weg. Wer ein Warnelement wieder braucht, holt sich den Token
+aus `app/globals.css` des App-Repos zurück.
+
+### Hell und Dunkel
+
+Die Seite folgt der Systemvorgabe (`prefers-color-scheme`), wie die App im
+Auslieferungszustand. Die App erlaubt zusätzlich eine manuelle Wahl unter
+Einstellungen → Darstellung; diese Seite hat keine Einstellungen und lässt es
+deshalb bei den zwei Paletten.
+
+Zwei Dinge bleiben bewusst einfarbig dunkel: `og.png`, weil eine Vorschau im
+Chat-Fenster das Schema des Betrachters nicht kennt, und `favicon.svg`, dessen
+Akzentfläche in beiden Schemata trägt.
+
 ## Marke
 
 Die Wortmarke ist „strado" in Familjen Grotesk Bold (SIL Open Font License)
@@ -28,9 +69,12 @@ mit -0.03 em Laufweite, in Pfade gewandelt. Sie liegt hier als
 stammen aus derselben Konvertierung. **Wer eine der beiden ändert, muss die
 andere mitziehen**, sonst zeigen Info-Seite und App zwei verschiedene Logos.
 
-Die Datei ist einfarbig in `#f2f2f4` angelegt, weil diese Seite nur ein
-Farbschema hat. Im App-Repo läuft dieselbe Kontur über `currentColor` und
-funktioniert dadurch in hell und dunkel.
+Die Kontur trägt `fill="currentColor"`, genau wie im App-Repo. Ein `<img>`
+kann `currentColor` nicht erben, deshalb bindet `styles.css` die Datei als
+CSS-Maske über einer Fläche in der Textfarbe ein (`.wortmarke`) — eine Datei,
+beide Farbschemata. Im Markup steht dabei weiterhin der Text „strado": er
+liefert den Linknamen für Screenreader und bleibt sichtbar, falls ein Browser
+keine Masken beherrscht.
 
 Die Marke wird kleingeschrieben gesetzt, der Fliesstext schreibt „Strado".
 
@@ -66,7 +110,7 @@ Gründerpreis wird nicht mehr angeboten und gilt nur noch für davor
 abgeschlossene Abos (Ziff. 4.3). `index.html` wirbt entsprechend nicht mehr
 mit „kostenlos", sondern mit Gratis-Einstieg und eigenen Strecken als
 Premium-Funktion („Gratis loslegen, eigene Strecken mit Premium" in der
-Meta-Beschreibung, sinngemäss in Hero-Notiz und Schluss-CTA).
+Meta-Beschreibung, sinngemäss in den Hero-Merkmalen und im Schluss-CTA).
 
 ## Domains
 
