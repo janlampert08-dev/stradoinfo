@@ -61,6 +61,55 @@ Zwei Dinge bleiben bewusst einfarbig dunkel: `og.png`, weil eine Vorschau im
 Chat-Fenster das Schema des Betrachters nicht kennt, und `favicon.svg`, dessen
 Akzentfläche in beiden Schemata trägt.
 
+## Vorzeigestrecke
+
+Die Streckenkarte im Hero zeigt bei jedem Aufruf eine andere echte Strecke.
+Sie kommt live aus der öffentlichen Strecken-API der App:
+
+```
+https://app.strado.ch/api/strecken?hoehenprofil=1
+```
+
+Der Endpunkt (`app/api/strecken/route.ts` im App-Repo) ist unauthentifiziert
+und liefert genau die freigegebenen, nicht privaten Strecken — dieselbe Sicht,
+die ein abgemeldeter Besucher in der App bekommt. Es geht kein Zugangsschlüssel
+mit, und in dieses Repo gehört auch keiner. `?hoehenprofil=1` hängt jeder
+Strecke ihr Höhenprofil an, ohne das sich die Kurve nicht zeichnen liesse; ohne
+den Parameter bleibt die Antwort schlank.
+
+**Die Seite zieht damit von selbst nach**: eine neu freigegebene Strecke
+erscheint ab dem nächsten Aufruf, eine umbenannte heisst hier anders, eine
+zurückgezogene verschwindet. Vorher stand an dieser Stelle eine von Hand
+gepflegte Liste, die genau das nicht tat und beim letzten Abgleich vier
+Strecken hinterherhinkte.
+
+Zwei Dinge hängen dafür am App-Repo — **wer sie dort ändert, bricht diese
+Karte**:
+
+| Was | Wo im App-Repo |
+| --- | --- |
+| `Access-Control-Allow-Origin` auf der Strecken-API | `lib/apiCors.ts` |
+| Der Parameter `?hoehenprofil=1` und die Feldnamen der Antwort | `app/api/strecken/route.ts` |
+
+Ohne den CORS-Header gibt der Browser die Antwort nicht heraus: diese Seite
+läuft auf `strado.ch`, die App auf `app.strado.ch`. Der Header steht dort
+bewusst ohne `Access-Control-Allow-Credentials`, es gehen also keine Cookies
+mit.
+
+Fällt der Abruf aus — kein JavaScript, kein Netz, ein Fehler in der API —,
+bleibt die Strecke stehen, die in `index.html` im Markup steht. Sie ist eine
+echte Strecke von damals und darf veralten; das ist der Preis dafür, dass die
+Karte nie leer ist und nie „lädt…" zeigt.
+
+Die fünf Fahrernamen und Bestzeiten daneben sind und bleiben erfunden: echte
+Nutzernamen und Fahrten gehören niemandem, der ihrer Veröffentlichung auf einer
+Werbeseite zugestimmt hat. Deshalb wird der Bestenlisten-Endpunkt der API hier
+nicht angefasst. Die Zeiten leiten sich aus der von der API geschätzten
+Fahrzeit ab (sie rechnet mit den Tempolimits der Strecke): der erste Rang fährt
+genau diese Schätzung, die übrigen brauchen länger. Keine gezeigte Zeit setzt
+also voraus, dass jemand schneller fährt als erlaubt — worum die Fusszeile
+bittet.
+
 ## Marke
 
 Die Wortmarke ist „strado" in Familjen Grotesk Bold (SIL Open Font License)
