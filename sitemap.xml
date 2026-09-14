@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Handgepflegt, weil diese Seite statisch ist und aus genau einer
+  indexierbaren Adresse besteht. Die vier Seiten unter /legal/ fehlen
+  absichtlich: sie tragen noindex im Kopf, und eine Sitemap, die auf
+  noindex-Seiten zeigt, sendet zwei widerspruechliche Signale.
+
+  Die Adressen tragen www, wie das Canonical in index.html — strado.ch
+  antwortet mit 308. Wer hier eine Seite ergaenzt, ergaenzt auch dort das
+  Canonical; beides muss dieselbe Adresse nennen.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.strado.ch/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

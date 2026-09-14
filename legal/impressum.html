@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Impressum — Strado</title>
 <meta name="description" content="Impressum und rechtliche Angaben zu Strado.">
+
+<!-- Kanonische Adresse. Ohne sie ist diese Seite unter zwei Hostnamen
+     gleichzeitig indexierbar: www.strado.ch und die Vercel-interne
+     cornice-ch.vercel.app, die denselben Inhalt mit 200 ausliefert. Zwei
+     Adressen mit identischem Text sind fuer eine Suchmaschine zwei
+     konkurrierende Seiten — bei einer jungen Domain genau die Aufteilung,
+     die man sich nicht leisten kann.
+
+     Der Wert traegt www, nicht die Apex-Form: strado.ch antwortet mit 308
+     auf www.strado.ch, dort steht der Inhalt. Ein Canonical, das selbst
+     erst weiterleitet, ist ein Widerspruch zwischen zwei Signalen. Verlinkt
+     wird in Fliesstext und Rechtstexten weiterhin die Apex-Form (siehe
+     README, Abschnitt "Domains") — das ist die Marke, dies hier ist die
+     Adresse. Wer bei Vercel die Apex-Domain zur primaeren macht, dreht
+     beide Werte hier und in og:url mit. -->
+<link rel="canonical" href="https://www.strado.ch/legal/impressum">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAFA">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0B0D">
 <meta name="robots" content="noindex">

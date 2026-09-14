@@ -13,7 +13,9 @@ favicon.svg           Favicon: das Signet auf der Akzentfläche
 favicon.ico           dasselbe Bild als PNG-in-ICO (16/32/48 px) für Safari und ältere Browser
 apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
 og.png                Freigabebild 1200x630 für og:image
-vercel.json           cleanUrls + Weiterleitungen der alten Pfade
+robots.txt            Crawler-Regeln + Verweis auf die Sitemap
+sitemap.xml           die eine indexierbare Adresse
+vercel.json           cleanUrls + Weiterleitungen der alten Pfade + Sicherheits-Header
 legal/
   index.html          Übersicht /legal
   impressum.html      /legal/impressum
@@ -242,6 +244,121 @@ Der Grundsatz von früher gilt unverändert: in den Texten steht nur eine
 Adresse, die uns gehört und die antwortet. Eine Adresse, die man nicht
 besitzt, kann jederzeit jemand anderem gehören — und sie stünde dann unter
 der Überschrift „Impressum".
+
+## Auffindbarkeit
+
+Vier Angaben, die zusammengehoeren — wer eine aendert, prueft die anderen
+drei mit.
+
+| Datei | Was sie sagt |
+| --- | --- |
+| `robots.txt` | Alles erlaubt, plus der Verweis auf die Sitemap |
+| `sitemap.xml` | Genau eine Adresse: die Startseite |
+| `<link rel="canonical">` in jeder Seite | Unter welcher Adresse diese Seite "richtig" steht |
+| `og:url` in `index.html` | Dieselbe Adresse noch einmal, fuer Chat-Vorschauen |
+
+**Alle vier tragen `www.strado.ch`, nicht die Apex-Form.** Das ist kein
+Widerspruch zum Abschnitt "Domains" weiter unten, sondern dessen Konsequenz:
+`strado.ch` antwortet mit 308 auf `www.strado.ch`, der Inhalt steht dort.
+Verlinkt wird im Fliesstext und in den Rechtstexten weiterhin die Apex-Form —
+sie ist die Marke. Die vier Angaben oben sind keine Links fuer Menschen,
+sondern Maschinenangaben, und eine Maschinenangabe, die selbst erst
+weiterleitet, ist ein Signal gegen ein anderes.
+
+Wer bei Vercel die Apex-Domain zur primaeren macht (siehe "Domains"), dreht
+alle vier mit — und nur dann.
+
+### Warum das Canonical nicht optional ist
+
+Diese Seite war bis dahin unter **zwei** Hostnamen gleichzeitig mit 200
+erreichbar: `www.strado.ch` und die projekteigene `cornice-ch.vercel.app`.
+Byte-gleicher Inhalt, kein Canonical, keine `robots.txt` — fuer eine
+Suchmaschine zwei konkurrierende Seiten um dieselben Suchbegriffe. Bei einer
+Domain ohne Historie ist das die Aufteilung, die man sich am wenigsten
+leisten kann. Das Canonical loest das unabhaengig davon, welche
+`*.vercel.app`-Adresse das Projekt gerade noch fuehrt: es zeigt immer auf
+`www.strado.ch`.
+
+Die vier Seiten unter `/legal/` tragen `<meta name="robots" content="noindex">`
+und stehen deshalb **nicht** in der Sitemap. Sie stehen aus demselben Grund
+auch nicht als `Disallow` in `robots.txt`: ein Disallow verbietet das
+*Abrufen*, nicht das Indexieren — der Crawler faende das `noindex` dann nie
+und liesse die von der Startseite verlinkte Adresse ohne Inhalt im Index
+stehen. Dieselbe Ueberlegung wie bei `/fahrer` im App-Repo (`app/robots.ts`).
+
+### Strukturierte Daten
+
+`index.html` traegt einen `application/ld+json`-Graphen aus drei Knoten:
+`Organization` (die Anbieterin laut Impressum), `WebSite` und
+`SoftwareApplication` (die App samt Funktionsliste und den drei Preisen aus
+AGB Ziff. 4.1).
+
+Zwei Regeln dafuer:
+
+1. **Keine erfundenen Bewertungen.** Kein `aggregateRating`, kein
+   `ratingValue`. Es gibt keine Nutzerbewertungen der App; eine Zahl zu
+   setzen, damit Google Sterne zeichnet, ist genau die Sorte strukturierter
+   Daten, fuer die Seiten abgestraft werden. Dieselbe Regel gilt im App-Repo
+   fuer `TouristTrip` (`app/strecken/[id]/page.tsx`).
+2. **Nichts, was nicht auch sichtbar dasteht.** Jede Angabe im Graphen steht
+   so auch auf der Seite oder in den Rechtstexten. Aendern sich die Preise in
+   der AGB, aendern sie sich hier mit.
+
+## Sicherheits-Header
+
+`vercel.json` setzt sie fuer alle Pfade. Bis dahin lieferte diese Seite
+**keinen einzigen** davon aus — die App unter `app.strado.ch` dagegen den
+vollen Satz. Eine statische Broschuerenseite ist kein dankbares Ziel, aber
+sie traegt die Rechtstexte und den Absprung in die App, und die Header
+kosten hier nichts.
+
+| Header | Wert | Wofuer |
+| --- | --- | --- |
+| `Content-Security-Policy` | siehe unten | Fremde Skripte, Rahmen, Formularziele |
+| `X-Frame-Options` | `DENY` | Clickjacking, zusammen mit `frame-ancestors` |
+| `X-Content-Type-Options` | `nosniff` | Kein MIME-Raten |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | Kein voller Pfad an fremde Ziele |
+| `Permissions-Policy` | Kamera/Mikrofon/Zahlung/Standort/USB aus | Die Seite braucht nichts davon |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains` | HTTPS erzwingen |
+
+Die CSP ist scharf, nicht `Report-Only`. Dieselbe Begruendung wie im App-Repo
+(`lib/csp.ts`): eine Policy ohne `report-uri` beobachtet nichts, sie schickt
+jeden Verstoss in die Konsole des Besuchers und sonst nirgendwohin.
+
+Was drin steht und warum:
+
+- `script-src 'self' 'unsafe-inline'` — die Seite traegt vier Inline-Skripte
+  (Vercel-Insights-Shim, Vorzeigestrecke, Kopfzeilenhoehe, Jahreszahl).
+  `'unsafe-eval'` braucht sie nicht und bekommt es nicht.
+- `style-src` und `font-src` — Google Fonts (Inter, IBM Plex Mono).
+  Ausdruecklich **ohne** `'unsafe-inline'`: die Seite hat weder `<style>`-
+  Bloecke noch `style="…"`-Attribute. Das Skript fuer `--header-h` setzt die
+  Variable per CSSOM, und das faellt nicht unter `style-src`.
+- `connect-src 'self' https://app.strado.ch` — die Vorzeigestrecke holt
+  `/api/strecken?hoehenprofil=1` von der App.
+- `img-src 'self' data:` — Signet und Wortmarke kommen per CSS `url()` aus
+  dem eigenen Repo.
+- `form-action 'none'` und `frame-src 'none'` — die Seite hat kein einziges
+  Formular und bindet nichts ein.
+
+`preload` fehlt bei HSTS mit Absicht: die Preload-Liste wird gegen die
+Apex-Domain geprueft, und die liefert hier nur die Weiterleitung aus. Der
+Token waere eine Behauptung, die dieses Projekt nicht einloesen kann.
+
+### Die CSP pruefen
+
+Sie ist im echten Browser geprueft worden und nicht nur gelesen —
+`node_modules` gibt es hier keine, der Ablauf war:
+
+1. Einen lokalen Server starten, der die Header aus `vercel.json` und die
+   `cleanUrls`-Regel nachbildet.
+2. Alle fuenf Seiten in Chromium laden und auf `Refused to …` in der Konsole
+   und auf blockierte Requests achten.
+3. **Gegenprobe:** ein Skript von einer nicht freigegebenen Origin
+   nachladen. Wird es *nicht* blockiert, ist jedes "keine Verstoesse" aus
+   Schritt 2 wertlos, weil die Policy dann gar nicht greift.
+
+Beim letzten Lauf: fuenf Seiten ohne Verstoss, Gegenprobe blockiert.
 
 ## Lokal ansehen
 

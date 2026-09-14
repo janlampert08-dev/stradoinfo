@@ -6,6 +6,22 @@
 <title>Strado — Kuratierte Fahrstrecken für Auto &amp; Motorrad</title>
 <meta name="description" content="Strado: kuratierte Pässe und Kurvenstrecken entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen — inklusive Feed, Höhenprofil, Wetter und Offline-Modus. Gratis loslegen, eigene Strecken selbst anlegen — lokal gestartet in Zürich.">
 
+<!-- Kanonische Adresse. Ohne sie ist diese Seite unter zwei Hostnamen
+     gleichzeitig indexierbar: www.strado.ch und die Vercel-interne
+     cornice-ch.vercel.app, die denselben Inhalt mit 200 ausliefert. Zwei
+     Adressen mit identischem Text sind fuer eine Suchmaschine zwei
+     konkurrierende Seiten — bei einer jungen Domain genau die Aufteilung,
+     die man sich nicht leisten kann.
+
+     Der Wert traegt www, nicht die Apex-Form: strado.ch antwortet mit 308
+     auf www.strado.ch, dort steht der Inhalt. Ein Canonical, das selbst
+     erst weiterleitet, ist ein Widerspruch zwischen zwei Signalen. Verlinkt
+     wird in Fliesstext und Rechtstexten weiterhin die Apex-Form (siehe
+     README, Abschnitt "Domains") — das ist die Marke, dies hier ist die
+     Adresse. Wer bei Vercel die Apex-Domain zur primaeren macht, dreht
+     beide Werte hier und in og:url mit. -->
+<link rel="canonical" href="https://www.strado.ch/">
+
 <!-- Zwei Werte statt eines festen dunklen: die Seite folgt jetzt wie die App
      der Systemvorgabe (siehe styles.css). Dieselben Farben wie in
      app/layout.tsx des App-Repos. -->
@@ -16,14 +32,20 @@
 <meta property="og:title" content="Strado — Kuratierte Fahrstrecken für Auto & Motorrad">
 <meta property="og:description" content="Strecken entdecken, per GPS aufzeichnen, in Bestenlisten je Fahrzeug vergleichen. Gratis loslegen, eigene Strecken selbst anlegen — lokal gestartet in Zürich.">
 <!-- Absolute Adresse, weil Open Graph keine relativen Pfade zulaesst.
-     strado.ch ist registriert und liefert diese Seite aus, deshalb steht
-     hier die eigene Domain statt der vercel.app-Adresse. Die Apex-Form
-     ohne www, wie ueberall im Repo — siehe README, Abschnitt "Domains".
-     Die Bedingung von
-     frueher bleibt gueltig: hier gehoert nur eine Adresse hinein, die uns
-     gehoert und die tatsaechlich antwortet — eine fremde Domain koennte
-     beim Teilen eine fremde Vorschau liefern. -->
-<meta property="og:url" content="https://strado.ch">
+     Die Bedingung von frueher bleibt gueltig: hier gehoert nur eine Adresse
+     hinein, die uns gehoert und die tatsaechlich antwortet — eine fremde
+     Domain koennte beim Teilen eine fremde Vorschau liefern.
+
+     Hier stand bis zu diesem Commit die Apex-Form, mit der Begruendung
+     "wie ueberall im Repo". Genau das war der Fehler: strado.ch antwortet
+     mit 308 auf www.strado.ch (live geprueft), die Adresse loeste also
+     nicht auf, sondern leitete weiter. Fuer den Fliesstext ist das
+     gleichgueltig, fuer eine Maschinenangabe nicht — og:url und das
+     Canonical oben sind dasselbe Versprechen an zwei Leser, und sie muessen
+     denselben Wert tragen. -->
+<meta property="og:url" content="https://www.strado.ch/">
+<meta property="og:site_name" content="Strado">
+<meta property="og:locale" content="de_CH">
 <!-- og.png liegt jetzt im Repo (1200x630, Wortmarke auf dem dunklen Grund
      der Seite), deshalb steht der Tag wieder hier — zusammen mit
      twitter:card, ohne die X keine grosse Karte zeigt. Absolute Adresse,
@@ -48,6 +70,103 @@
      ist eine Kontur, keine gesetzte Schrift. -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Strukturierte Daten. Bis hierher hatte die Infoseite keine — die App
+     dagegen schon (TouristTrip je Strecke, app/strecken/[id]/page.tsx).
+     Ausgerechnet die Seite, die auf den Markennamen ranken soll, sagte einer
+     Suchmaschine also nicht, was sie ist und wer dahintersteht.
+
+     Drei Knoten in einem Graphen statt drei einzelner Bloecke, damit sie
+     aufeinander zeigen koennen (publisher/provider per @id) statt dieselbe
+     Organisation dreimal zu wiederholen.
+
+     Bewusst OHNE aggregateRating und ohne ratingValue — dieselbe Regel wie
+     in app/strecken/[id]/page.tsx: eine erfundene Bewertungszahl, nur damit
+     Google Sterne zeichnet, ist genau die Sorte strukturierter Daten, fuer
+     die Seiten abgestraft werden. Es gibt keine Nutzerbewertungen der App,
+     also steht hier keine.
+
+     Jede Angabe unten steht so auch sichtbar auf der Seite oder in den
+     Rechtstexten (Preise: AGB Ziff. 4.1; Anbieterin und Kontakt:
+     /legal/impressum). Wer dort etwas aendert, aendert es hier mit —
+     strukturierte Daten, die der sichtbaren Seite widersprechen, sind ein
+     Verstoss gegen Googles Richtlinien und nicht bloss ungenau. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.strado.ch/#anbieterin",
+      "name": "Strado",
+      "url": "https://www.strado.ch/",
+      "logo": "https://www.strado.ch/og.png",
+      "email": "contact@strado.ch",
+      "founder": { "@type": "Person", "name": "Jan Lampert" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "c/o Softsite AG, Leutschenbachstrasse 45",
+        "postalCode": "8050",
+        "addressLocality": "Z\u00fcrich",
+        "addressCountry": "CH"
+      },
+      "sameAs": ["https://www.instagram.com/strado.ch"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.strado.ch/#website",
+      "url": "https://www.strado.ch/",
+      "name": "Strado",
+      "description": "Kuratierte Pass- und Kurvenstrecken rund um Z\u00fcrich \u2014 entdecken, per GPS aufzeichnen und in Bestenlisten je Fahrzeug vergleichen.",
+      "inLanguage": "de-CH",
+      "publisher": { "@id": "https://www.strado.ch/#anbieterin" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.strado.ch/#app",
+      "name": "Strado",
+      "url": "https://app.strado.ch/",
+      "applicationCategory": "TravelApplication",
+      "applicationSubCategory": "Fahrstrecken und Fahrtenaufzeichnung",
+      "operatingSystem": "Web, iOS, Android",
+      "inLanguage": "de-CH",
+      "description": "Kuratierte P\u00e4sse und Kurvenstrecken entdecken, Fahrten per GPS aufzeichnen, Zeiten in Bestenlisten je Fahrzeug vergleichen. Mit H\u00f6henprofil, Wetter, Feed und Offline-Modus.",
+      "featureList": [
+        "Kuratierte Strecken erkunden",
+        "Live-Tracking mit automatischer Rundenerkennung",
+        "Bestenlisten je Strecke und Fahrzeug",
+        "H\u00f6henprofil, Wetter und Live-Verkehr",
+        "Feed, Kudos und Folgen",
+        "Offline nutzbar"
+      ],
+      "provider": { "@id": "https://www.strado.ch/#anbieterin" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Gratis",
+          "price": "0",
+          "priceCurrency": "CHF",
+          "description": "Strecken entdecken, Fahrten aufzeichnen und eigene Strecken anlegen."
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium \u2014 Monatsabo",
+          "price": "4.90",
+          "priceCurrency": "CHF",
+          "url": "https://app.strado.ch/profil/premium"
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium \u2014 Jahresabo",
+          "price": "49.00",
+          "priceCurrency": "CHF",
+          "url": "https://app.strado.ch/profil/premium"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
