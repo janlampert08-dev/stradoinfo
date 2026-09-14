@@ -7,8 +7,9 @@ Statische Seite ohne Build-Schritt (reines HTML/CSS), damit sie unabhängig von 
 ```
 index.html            Startseite
 styles.css            Designsystem, gespiegelt aus app/globals.css des App-Repos
-wortmarke.svg         Wortmarke, als CSS-Maske in Kopf- und Fusszeile jeder Seite
-favicon.svg           Favicon: das "s" der Wortmarke auf der Akzentfläche
+wortmarke.svg         Wortmarke, als CSS-Maske in der Fusszeile und ab 640 px in der Kopfzeile
+signet.svg            Signet, als CSS-Maske in der Kopfzeile unter 640 px
+favicon.svg           Favicon: das Signet auf der Akzentfläche
 favicon.ico           dasselbe Bild als PNG-in-ICO (16/32/48 px) für Safari und ältere Browser
 apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
 og.png                Freigabebild 1200x630 für og:image
@@ -60,6 +61,9 @@ deshalb bei den zwei Paletten.
 Zwei Dinge bleiben bewusst einfarbig dunkel: `og.png`, weil eine Vorschau im
 Chat-Fenster das Schema des Betrachters nicht kennt, und `favicon.svg`, dessen
 Akzentfläche in beiden Schemata trägt.
+
+Kopf- und Fusszeile folgen dagegen dem Schema: Wortmarke wie Signet liegen als
+Maske über einer Fläche in der Textfarbe, eine Datei für hell und dunkel.
 
 ## Vorzeigestrecke
 
@@ -126,6 +130,36 @@ liefert den Linknamen für Screenreader und bleibt sichtbar, falls ein Browser
 keine Masken beherrscht.
 
 Die Marke wird kleingeschrieben gesetzt, der Fliesstext schreibt „Strado".
+
+### Signet
+
+Neben der Wortmarke steht das Signet: das „o", flach gedrückt zum Rundkurs.
+Es kommt **nicht** aus der Schrift, sondern ist gezeichnete Geometrie — zwei
+Ellipsen, deren Aussparung etwas höher sitzt als die Aussenkontur. Deshalb ist
+das Band oben schmal und unten breit, und deshalb ist es das Zeichen einer
+Strecke in der Landschaft und nicht irgendein Wiederhol-Symbol. Es liegt hier
+als `signet.svg`, im App-Repo als `SIGNET` in `lib/marke.ts`; die Zusage oben
+gilt für beide Marken gleichermassen.
+
+Drei Dinge, an denen man es kaputtmachen kann:
+
+- Es ist **92 : 54**, also rund 1.7-mal so breit wie hoch. Höhe vorgeben, die
+  Breite folgen lassen — nie in ein Quadrat zwingen.
+- Die Aussparung läuft **gegen** die Aussenkontur. Unter der
+  nonzero-Füllregel, nach der Browser, Satori und Canvas füllen, wäre eine
+  gleichläufige Punze Fläche statt Loch. Den Pfad also kopieren, nicht in
+  einem Grafikprogramm nachzeichnen.
+- Auf den Kacheln (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) ist
+  es nach der **Breite** bemessen: 70 % der Kante, wie `app/icon.tsx` und
+  `app/apple-icon.tsx` im App-Repo. Bei 16 px bleibt das Band oben knapp über
+  einem Pixel — das ist so gewollt und getestet; wer es kräftiger will, ändert
+  es in beiden Repos zugleich, sonst zeigen die zwei Tabs verschiedene Icons.
+
+Die Kacheln sind aus genau dieser Geometrie gerastert (zwei Ellipsen,
+Mittelpunkt 46/27 mit 46×27 und 46/23.5 mit 34×14.5, Zeichen `#fafafa` auf
+`#3d5afe`). Ein Build-Schritt liegt dafür bewusst nicht im Repo — die Seite
+hat keinen, und die Angaben hier reichen, um die drei Dateien neu zu
+erzeugen.
 
 ## Rechtstexte
 

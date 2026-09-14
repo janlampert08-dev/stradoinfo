@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 54" role="img" aria-label="Strado">
+  <!-- Das Signet: das "o" der Wortmarke, flach gedrueckt zum Rundkurs. Nicht
+       die gestauchte Schrift, sondern gezeichnete Geometrie — zwei Ellipsen,
+       deren Aussparung 3.5 Einheiten hoeher sitzt als die Aussenkontur. Daher
+       das Band oben schmal, unten breit: der Rundkurs liegt in der Landschaft
+       statt flach auf dem Papier.
+
+       Zwei Dinge nicht anfassen. Erstens laeuft die Aussparung *gegen* die
+       Aussenkontur — unter der nonzero-Fuellregel waere eine gleichlaeufige
+       Punze Flaeche statt Loch. Zweitens ist das Zeichen 92:54, also rund
+       1.7-mal so breit wie hoch: nach der Hoehe bemessen und die Breite
+       folgen lassen, nie in ein Quadrat zwingen.
+
+       fill="currentColor" wie components/Wortmarke.tsx im App-Repo. Die Seite
+       bindet die Datei als CSS-Maske ein (.signet in styles.css), dabei zaehlt
+       nur der Alphakanal — die Farbe kommt von der Textfarbe der Umgebung und
+       stimmt so in hell wie in dunkel. -->
+  <path fill="currentColor" d="M0 27A46 27 0 1 1 92 27A46 27 0 1 1 0 27ZM12 23.5A34 14.5 0 1 0 80 23.5A34 14.5 0 1 0 12 23.5Z"/>
+</svg>
