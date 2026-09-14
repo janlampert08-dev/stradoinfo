@@ -136,7 +136,7 @@ h1, h2, h3 {
   }
 }
 
-/* ---------- Wortmarke ----------
+/* ---------- Wortmarke und Signet ----------
  *
  * Die App zeichnet dieselbe Kontur als Inline-SVG mit fill="currentColor"
  * (components/Wortmarke.tsx), damit sie in hell und dunkel funktioniert.
@@ -166,6 +166,41 @@ h1, h2, h3 {
     background-color: currentColor;
     -webkit-mask: url("/wortmarke.svg") no-repeat center / contain;
     mask: url("/wortmarke.svg") no-repeat center / contain;
+  }
+}
+
+/* Das Signet — der Rundkurs — traegt die Kopfzeile auf schmalen Schirmen,
+ * genau wie components/LogoLink.tsx in der App: unter 640 px das Zeichen, ab
+ * 640 px der ganze Schriftzug. Die Fusszeile behaelt den Schriftzug in jeder
+ * Breite; sie ist eine mittige Spalte und hat den Platz.
+ *
+ * Standardmaessig unsichtbar: faellt die Maske aus, bleibt es unsichtbar und
+ * der Schriftzug steht ueberall, denn der Tausch unten liegt mit im
+ * @supports-Block. Ohne das zeigte ein Browser ohne Maskenunterstuetzung
+ * unter 640 px ueberhaupt kein Logo.
+ */
+.signet {
+  display: none;
+}
+
+@supports (mask-image: url("/signet.svg")) or (-webkit-mask-image: url("/signet.svg")) {
+  .signet {
+    /* 92 : 54 aus dem viewBox, auf dieselben 18 px Hoehe wie die Wortmarke.
+       Das Zeichen ist rund 1.7-mal so breit wie hoch — die Breite folgt der
+       Hoehe, eine quadratische Flaeche wuerde es stauchen. */
+    width: 30.67px;
+    height: 18px;
+    background-color: currentColor;
+    -webkit-mask: url("/signet.svg") no-repeat center / contain;
+    mask: url("/signet.svg") no-repeat center / contain;
+  }
+
+  @media (max-width: 639.98px) {
+    .site-header .signet { display: block; }
+    /* Der Linkname haengt hier nicht mehr am Text: display: none nimmt ihn
+       auch aus dem Accessibility-Baum. Deshalb traegt das <a> in der
+       Kopfzeile ein aria-label. */
+    .site-header .wortmarke { display: none; }
   }
 }
 
