@@ -377,13 +377,30 @@
         der erste.
       </p>
       <p>
+        <strong>Aufrufe.</strong> Zusätzlich zählen wir, wie oft ein solcher
+        Link an einem Tag aufgerufen wurde — als blosse Zahl pro Code und Tag.
+        Dabei werden <strong>weder IP-Adresse noch Uhrzeit noch irgendeine
+        Kennung</strong> gespeichert; aus dieser Zahl lässt sich niemand
+        herauslesen, und sie lässt sich keinem Besuch zuordnen.
+      </p>
+      <p>
         <strong>Was daraus entsteht.</strong> Zum Konto ist damit hinterlegt,
         über welchen Link es zustande kam. Wird später — auch Monate später —
         ein Premium-Abo abgeschlossen, halten wir zusätzlich fest, dass aus
         diesem Einstiegsweg ein Abo geworden ist. Ausgewertet wird das
         <strong>nur zusammengefasst pro Link</strong> („über diesen Link kamen
-        zwölf Registrierungen, daraus zwei Abos"). Wer hinter einem Konto steht,
-        erfahren die betreffenden Personen nicht.
+        zwölf Registrierungen, daraus zwei Abos").
+      </p>
+      <p>
+        <strong>Wer diese Zahlen sieht.</strong> Die Person, auf die ein Link
+        läuft, kann die zusammengefassten Zahlen zu <strong>ihrem eigenen</strong>
+        Link in ihrem Konto einsehen: Aufrufe, entstandene Konten, daraus
+        entstandene Abos, dazu den Tagesverlauf der Aufrufe. Sie erfährt dabei
+        <strong>nicht, wer</strong> sich registriert oder ein Abo abgeschlossen
+        hat — weder Name noch Zeitpunkt noch sonst ein Merkmal eines einzelnen
+        Kontos. Technisch ist das nicht bloss eine Frage der Darstellung: die
+        Auswertung wird in der Datenbank zusammengefasst, einzelne Datensätze
+        verlassen sie gar nicht.
       </p>
       <p>
         <strong>Keine Weitergabe.</strong> Diese Angaben verbleiben bei uns. Es
@@ -601,7 +618,7 @@
             <tr><td>IP-Adressen zur Missbrauchsabwehr</td><td>flüchtig im Arbeitsspeicher, wenige Minuten, keine Datenbankablage</td></tr>
             <tr><td>Konto-, Profil-, Fahrten- und Community-Daten</td><td>bis zur Löschung durch die Nutzenden bzw. bis zur Kontolöschung — mit den Ausnahmen aus Ziff. 9.4</td></tr>
             <tr><td>Abo-Zustand (Ziff. 3.9)</td><td>bis zum Ende des Abos; bei der Kontolöschung wird die Zeile entfernt</td></tr>
-            <tr><td>Herkunft einer Registrierung (Ziff. 3.11)</td><td>Cookie 90 Tage bzw. bis zur Registrierung; die Zuordnung zum Konto bis zur Kontolöschung; die zusammengefasste Zählung bleibt ohne Kontobezug bestehen</td></tr>
+            <tr><td>Herkunft einer Registrierung (Ziff. 3.11)</td><td>Cookie 90 Tage bzw. bis zur Registrierung; die Zuordnung zum Konto bis zur Kontolöschung; die zusammengefasste Zählung und die Aufrufzahl pro Tag bleiben ohne Kontobezug bestehen</td></tr>
             <tr><td>Rechnungs- und Zahlungsunterlagen</td><td>gesetzliche Aufbewahrungsfrist, in der Regel 10 Jahre (Art. 958f OR) — überwiegend bei Stripe</td></tr>
             <tr><td>Protokolldaten der Hosting-Anbieter</td><td>nach deren Aufbewahrungsfristen</td></tr>
           </tbody>
