@@ -279,6 +279,45 @@ leisten kann. Das Canonical loest das unabhaengig davon, welche
 `*.vercel.app`-Adresse das Projekt gerade noch fuehrt: es zeigt immer auf
 `www.strado.ch`.
 
+### Der zweite Riegel: `X-Robots-Tag` fuer jede `*.vercel.app`-Adresse
+
+Ein Canonical ist ein **Hinweis**, keine Anweisung. Eine Suchmaschine darf
+ihm folgen und muss nicht; eine Adresse, die mit 200 antwortet, kann also
+trotzdem im Index landen. Deshalb steht in `vercel.json` eine zweite
+Header-Regel, die ausschliesslich auf Hostnamen mit der Endung
+`.vercel.app` greift und dort `X-Robots-Tag: noindex` setzt:
+
+```json
+{
+  "source": "/(.*)",
+  "has": [{ "type": "host", "value": { "suf": ".vercel.app" } }],
+  "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+}
+```
+
+Drei Dinge dazu:
+
+- **Die eigenen Domains sind davon nicht erfasst**, und zwar nicht aus
+  Sorgfalt, sondern weil sie nicht auf `.vercel.app` enden. Ein
+  Suffix-Vergleich kann `www.strado.ch` nicht treffen. Das ist wichtig: eine
+  zu weit gefasste Regel an dieser Stelle nimmt die ganze Seite aus dem
+  Index, und das faellt erst Wochen spaeter auf.
+- **Suffix statt genauem Hostnamen.** `cornice-ch.vercel.app` ist die
+  Adresse von heute; ein Projekt kann weitere bekommen. Die Endung deckt
+  alle ab, auch kuenftige.
+- **Vorschau-Deployments hatten den Header schon**, den setzt Vercel von
+  selbst — nachgemessen. Produktiv verknuepfte `*.vercel.app`-Adressen wie
+  `cornice-ch` aber **nicht**, und genau die sind das Problem. Die Regel
+  macht die Zusage unabhaengig von einer Vercel-Voreinstellung, die sich
+  aendern kann.
+
+Wer die Regel anfasst, prueft sie gegen das offizielle Schema
+(`https://openapi.vercel.sh/vercel.json`, Abschnitt `headers`): `suf` ist
+dort ein zulaessiger Operator fuer `type: "host"`, erfundene Namen wie
+`endswith` werden abgewiesen. Der lokale Testserver aus „Die CSP pruefen"
+wendet bewusst nur die Regeln **ohne** `has` an — er stellt damit einen
+Aufruf unter `www.strado.ch` nach, wo diese Regel gerade nicht greift.
+
 Die vier Seiten unter `/legal/` tragen `<meta name="robots" content="noindex">`
 und stehen deshalb **nicht** in der Sitemap. Sie stehen aus demselben Grund
 auch nicht als `Disallow` in `robots.txt`: ein Disallow verbietet das
@@ -320,6 +359,7 @@ kosten hier nichts.
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | Kein voller Pfad an fremde Ziele |
 | `Permissions-Policy` | Kamera/Mikrofon/Zahlung/Standort/USB aus | Die Seite braucht nichts davon |
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains` | HTTPS erzwingen |
+| `X-Robots-Tag` | `noindex`, **nur** auf `*.vercel.app` | siehe „Der zweite Riegel" oben |
 
 Die CSP ist scharf, nicht `Report-Only`. Dieselbe Begruendung wie im App-Repo
 (`lib/csp.ts`): eine Policy ohne `report-uri` beobachtet nichts, sie schickt
