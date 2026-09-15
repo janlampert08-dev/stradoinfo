@@ -54,7 +54,13 @@
      Vorschaubild, das 404 liefert, ist schlechter als gar keines.
      Das Bild bleibt bewusst einfarbig dunkel: eine Vorschau in einem
      Chat-Fenster kennt das Farbschema des Betrachters nicht. -->
-<meta property="og:image" content="https://strado.ch/og.png">
+<!-- www, wie og:url und das Canonical. Der Apex antwortet auch hier mit 308
+     (live geprüft: strado.ch/og.png -> www.strado.ch/og.png). Bei einem BILD
+     wiegt das schwerer als bei einer Seitenadresse: ein Teil der
+     Social-Scraper folgt für og:image keiner Weiterleitung und zeigt dann gar
+     keine Vorschau. Beim Umstellen von og:url ist diese Zeile zunächst
+     stehengeblieben — dieselbe Datei nannte damit zwei verschiedene Hosts. -->
+<meta property="og:image" content="https://www.strado.ch/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Strado — kuratierte Kurven- und Passstrecken in der Schweiz">
