@@ -1,0 +1,16 @@
+# Die Infoseite ist die oeffentliche Visitenkarte — sie soll vollstaendig in
+# den Index. Bis zu diesem Commit gab es diese Datei gar nicht: /robots.txt
+# antwortete mit 404. Das verbietet nichts, kostet aber den einzigen Ort, an
+# dem sich eine Sitemap ohne Search-Console-Zugang ankuendigen laesst.
+#
+# Die Rechtstexte unter /legal/ stehen bewusst NICHT als Disallow hier. Sie
+# sollen nicht in den Index, und dafuer tragen sie <meta name="robots"
+# content="noindex"> im Kopf. Ein Disallow wuerde das Gegenteil bewirken:
+# es verbietet das ABRUFEN, nicht das Indexieren — der Crawler duerfte die
+# Seite dann nicht mehr holen, faende das noindex also nie und liesse die
+# Adresse (von der Startseite verlinkt) ohne Inhalt im Index stehen.
+# Dieselbe Ueberlegung wie bei /fahrer im App-Repo, siehe app/robots.ts.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.strado.ch/sitemap.xml

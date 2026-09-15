@@ -3,12 +3,88 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/impressum.html", "destination": "/legal/impressum", "permanent": true },
-    { "source": "/impressum", "destination": "/legal/impressum", "permanent": true },
-    { "source": "/datenschutz.html", "destination": "/legal/datenschutz", "permanent": true },
-    { "source": "/datenschutz", "destination": "/legal/datenschutz", "permanent": true },
-    { "source": "/nutzungsbedingungen.html", "destination": "/legal/agb", "permanent": true },
-    { "source": "/nutzungsbedingungen", "destination": "/legal/agb", "permanent": true },
-    { "source": "/agb", "destination": "/legal/agb", "permanent": true }
+    {
+      "source": "/impressum.html",
+      "destination": "/legal/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/impressum",
+      "destination": "/legal/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz.html",
+      "destination": "/legal/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/legal/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/nutzungsbedingungen.html",
+      "destination": "/legal/agb",
+      "permanent": true
+    },
+    {
+      "source": "/nutzungsbedingungen",
+      "destination": "/legal/agb",
+      "permanent": true
+    },
+    {
+      "source": "/agb",
+      "destination": "/legal/agb",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": {
+            "suf": ".vercel.app"
+          }
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://app.strado.ch; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), payment=(), geolocation=(), usb=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
+      ]
+    }
   ]
 }
