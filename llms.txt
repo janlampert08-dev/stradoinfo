@@ -1,0 +1,46 @@
+<!--
+  Pflegehinweis (kein Crawler-Futter, nur für Menschen): Die Preise unten
+  stehen an vier Stellen wortgleich — AGB Ziff. 4.1 (/legal/agb), der
+  Premium-Abschnitt in index.html, das SoftwareApplication-JSON-LD dort und
+  diese Datei. Wer sie ändert, ändert alle vier (Googles Regel: strukturierte
+  Daten, die der sichtbaren Seite widersprechen, sind ein Verstoss).
+-->
+
+# Strado
+
+> Kuratierte Pässe und Kurvenstrecken in der Schweiz. Fahrt per GPS aufzeichnen,
+> Zeit in der Bestenliste des eigenen Fahrzeugs vergleichen. Sprache: Deutsch (de-CH).
+
+- Info-Seite (diese Domain): https://www.strado.ch/
+- Web-App: https://app.strado.ch/
+- Kontakt: contact@strado.ch
+- Instagram: https://www.instagram.com/strado.ch
+
+## Die App
+
+- Strecken entdecken: https://app.strado.ch/
+- Passstatus, tagesaktuell: https://app.strado.ch/paesse
+- Ranglisten: https://app.strado.ch/ranglisten
+- Premium-Übersicht: https://app.strado.ch/premium
+- Was „verifizierte Zeiten" bedeutet: https://app.strado.ch/verifiziert
+- Live-Streckenliste für Maschinen (Namen, Regionen, Links):
+  https://app.strado.ch/llms.txt
+
+## Premium
+
+- Monat: CHF 6.90 pro Monat
+- Jahr: CHF 39.00 pro Jahr, 14 Tage gratis, einmal pro Konto
+- Saisonpass: CHF 29.00, 6 Monate ab Kauf, ohne Verlängerung
+- Gratis: CHF 0 — Entdecken, Aufzeichnen, Ranglisten, Feed und Passstatus bleiben gratis.
+
+## Öffentliche API (ohne Schlüssel, nur per IP begrenzt)
+
+- GET https://app.strado.ch/api/strecken — alle freigegebenen Strecken als JSON
+- GET https://app.strado.ch/api/strecken?hoehenprofil=1 — zusätzlich mit Höhenprofil
+- GET https://app.strado.ch/api/strecken/{id} — eine Strecke im Detail
+
+## Rechtliches
+
+- Impressum: https://www.strado.ch/legal/impressum
+- Datenschutz: https://www.strado.ch/legal/datenschutz
+- AGB: https://www.strado.ch/legal/agb

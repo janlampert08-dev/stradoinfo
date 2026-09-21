@@ -15,6 +15,7 @@ apple-touch-icon.png  dasselbe Bild, 180x180, für den iOS-Homebildschirm
 og.png                Freigabebild 1200x630 für og:image
 robots.txt            Crawler-Regeln + Verweis auf die Sitemap
 sitemap.xml           die eine indexierbare Adresse
+llms.txt              Maschinenlesbare Kurzbeschreibung für KI-Assistenten (kein Index-Inhalt)
 vercel.json           cleanUrls + Weiterleitungen der alten Pfade + Sicherheits-Header
 legal/
   index.html          Übersicht /legal
@@ -342,6 +343,21 @@ Zwei Regeln dafuer:
 2. **Nichts, was nicht auch sichtbar dasteht.** Jede Angabe im Graphen steht
    so auch auf der Seite oder in den Rechtstexten. Aendern sich die Preise in
    der AGB, aendern sie sich hier mit.
+
+### llms.txt
+
+`llms.txt` ist die maschinenlesbare Entsprechung der Seite fuer
+KI-Assistenten (ChatGPT, Perplexity, Gemini): was Strado ist, wohin die
+oeffentlichen App-Seiten fuehren und wo die Live-Streckenliste steht
+(`https://app.strado.ch/llms.txt` im App-Repo, mit tagesaktuellen Namen
+und Preisen aus Stripe). Sie ist bewusst **kein** Index-Inhalt — reiner
+Text, keine HTML-Seite, kein Sitemap-Eintrag — und braucht deshalb auch
+kein Canonical.
+
+Die Preise hier sind statisch und stehen damit an vierter Stelle
+wortgleich: AGB Ziff. 4.1, Premium-Abschnitt und JSON-LD in `index.html`
+und diese Datei. Wer sie aendert, aendert alle vier; der Kommentar am Kopf
+der Datei sagt dasselbe.
 
 ## Sicherheits-Header
 
