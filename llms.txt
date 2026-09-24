@@ -23,6 +23,7 @@
 - Ranglisten: https://app.strado.ch/ranglisten
 - Premium-Übersicht: https://app.strado.ch/premium
 - Was „verifizierte Zeiten" bedeutet: https://app.strado.ch/verifiziert
+- Häufige Fragen (Daten und GPS, Bestenliste, Offline, Kosten): https://www.strado.ch/#fragen
 - Live-Streckenliste für Maschinen (Namen, Regionen, Links):
   https://app.strado.ch/llms.txt
 
