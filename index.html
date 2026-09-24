@@ -178,6 +178,77 @@
           "url": "https://app.strado.ch/profil/premium"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.strado.ch/#fragen",
+      "inLanguage": "de-CH",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was passiert mit meinen Daten, zum Beispiel dem GPS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strado zeichnet deinen Standort nur auf, während eine Fahrt läuft, und nur, wenn du ihn im Browser freigegeben hast. Deine Fahrten sind privat, bis du eine einzelne Fahrt öffentlich stellst. Den vollständigen GPS-Track siehst nur du. Bei einer öffentlichen Fahrt schneidet Strado Anfang und Ende ab, standardmässig 200 Meter. So lässt sich nicht ablesen, wo du wohnst oder arbeitest. Den Radius stellst du im Profil ein. Während der Aufzeichnung meldet die App etwa alle 20 Sekunden deine Position an den Server, damit sich die Zeit nicht fälschen lässt. Gespeichert wird nur die jeweils letzte Meldung, eine Spur deines Wegs entsteht dabei nicht. Aus Fotos entfernen wir Aufnahmeort und Aufnahmezeit, bevor sie gespeichert werden. Auf deinem Profil sind Fahrzeuge und Zahlen wie Kilometer und Höhenmeter von Anfang an sichtbar. Jede Angabe kannst du in den Einstellungen einzeln ausschalten. Wir verkaufen keine Daten, zeigen keine Werbung und setzen keine Werbecookies. Konto, Fahrten und Fotos liegen in einem Rechenzentrum in Frankfurt (EU). Du kannst jede Fahrt löschen oder als GPX-Datei exportieren. Löschst du dein Konto, werden alle GPS-Tracks gelöscht. Veröffentlichte Streckenzeiten bleiben ohne deinen Namen in der Bestenliste. Alles Weitere steht in der Datenschutzerklärung."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Muss ich eine App herunterladen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Strado läuft im Browser, auf dem Handy wie auf dem Computer. Wenn du Strado zum Home-Bildschirm hinzufügst, öffnet es sich wie eine normale App im Vollbild. Auf dem iPhone geht das in Safari über „Teilen“ und „Zum Home-Bildschirm“."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Warum muss der Bildschirm während der Fahrt an bleiben?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sobald der Bildschirm ausgeht, unterbricht der Browser das GPS. Auf dem iPhone stoppt die Aufzeichnung dann ganz. Strado hält den Bildschirm deshalb während der Aufzeichnung selbst wach, sofern dein Browser das erlaubt. Eine Handyhalterung und ein Ladekabel helfen auf längeren Fahrten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie komme ich in die Bestenliste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Starte eine Strecke und fahr sie bis ans Ziel. Die Zeit läuft ab dem Startpunkt der Strecke, die Ankunft erkennt die App selbst. Nach dem Speichern stellst du die Fahrt öffentlich, erst dann erscheint deine Zeit in der Bestenliste. Die Liste lässt sich nach Fahrzeugklasse filtern."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was, wenn ich oben am Pass kein Netz habe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPS braucht kein Netz, die Aufzeichnung läuft also weiter. Damit Karte und Strecke trotzdem da sind, speicherst du die Strecke vorher offline: drei Strecken gratis, mit Premium unbegrenzt. Ohne Verbindung kann der Server die Zeit allerdings nicht mitmessen. Die Fahrt wird dann nicht als verifiziert gekennzeichnet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Geht es darum, möglichst schnell zu fahren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Strado ist kein Wettbewerb um Geschwindigkeit. Es gelten die Verkehrsregeln, und eine Fahrt, bei der du sie missachtet hast, darfst du nicht veröffentlichen. Rennen und Fahren im Pulk sind nicht erlaubt. Musst du zwischen der Aufzeichnung und der Sicherheit anderer wählen, brich die Aufzeichnung ab. Die Regeln stehen in den AGB (Ziff. 11)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meine Lieblingsstrecke fehlt. Was nun?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leg sie selbst an, das ist gratis: Strecke erstellen. Schlägst du sie öffentlich vor, schauen wir sie uns an und schalten sie frei. Danach sehen sie alle. Eine private Strecke, die nur du siehst, ist ohne Abo ebenfalls möglich, mit Premium beliebig viele."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kostet Strado etwas, und wie kündige ich Premium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entdecken, Aufzeichnen, Ranglisten, Feed und Passstatus sind gratis. Premium ist freiwillig. Monats- und Jahresabo kündigst du jederzeit ohne Frist im Profil über das Kundenportal, Premium läuft dann bis zum Ende der bezahlten Zeit. Der Saisonpass endet nach sechs Monaten von selbst."
+          }
+        }
+      ]
     }
   ]
 }
@@ -197,6 +268,7 @@
       <nav class="site-nav">
         <a href="#funktionen">Funktionen</a>
         <a href="#so-gehts">So geht's</a>
+        <a href="#fragen">Fragen</a>
       </nav>
       <a class="btn btn-primary btn-sm" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
     </div>
@@ -431,6 +503,101 @@
       </ul>
       <p class="premium-hinweis">Entdecken, Aufzeichnen, Ranglisten, Feed und Passstatus bleiben gratis.</p>
       <a class="btn btn-primary btn-lg" href="https://app.strado.ch/profil/premium" rel="noopener">Premium ansehen</a>
+    </div>
+  </section>
+
+  <!-- FRAGEN
+       Fragen, die beim Benutzen der App aufkommen, nicht beim Kauf. Jede
+       Antwort stuetzt sich auf etwas, das schon verbindlich irgendwo steht:
+       die Datenfrage auf die Datenschutzerklaerung (Ziff. 3.4, 3.5, 6, 8,
+       9.4), die Tempofrage auf AGB Ziff. 11.3/11.4, Offline und Kuendigung
+       auf AGB Ziff. 3.2 und 6.4, der Bildschirmhinweis auf den Text, den die
+       App selbst vor der ersten Fahrt zeigt (components/ErsteFahrtHinweise.tsx).
+       Aendert sich dort etwas, muss es hier mit — und im FAQPage-JSON-LD
+       unten, das denselben Text traegt.
+
+       <details> statt eines Skripts: auf- und zuklappen, Tastatur und
+       Screenreader funktionieren ohne JavaScript, und die Suche im Browser
+       findet auch Text in zugeklappten Antworten. Die Datenfrage steht
+       zuoberst und ist offen, weil sie die ist, die niemand ueberlesen soll. -->
+  <section class="fragen" id="fragen">
+    <div class="wrap fragen-inner">
+      <div class="fragen-kopf">
+        <p class="section-label">Fragen</p>
+        <h2>Häufige Fragen</h2>
+        <p class="section-lede">
+          Deine Frage fehlt? Schreib an
+          <a class="text-link" href="mailto:contact@strado.ch">contact@strado.ch</a>.
+        </p>
+      </div>
+
+      <div class="fragen-liste">
+        <details class="frage" open>
+          <summary>Was passiert mit meinen Daten, zum Beispiel dem GPS?</summary>
+          <div class="antwort">
+            <p>Strado zeichnet deinen Standort nur auf, während eine Fahrt läuft, und nur, wenn du ihn im Browser freigegeben hast.</p>
+            <ul>
+              <li>Deine Fahrten sind privat, bis du eine einzelne Fahrt öffentlich stellst. Den vollständigen GPS-Track siehst nur du.</li>
+              <li>Bei einer öffentlichen Fahrt schneidet Strado Anfang und Ende ab, standardmässig 200 Meter. So lässt sich nicht ablesen, wo du wohnst oder arbeitest. Den Radius stellst du im Profil ein.</li>
+              <li>Während der Aufzeichnung meldet die App etwa alle 20 Sekunden deine Position an den Server, damit sich die Zeit nicht fälschen lässt. Gespeichert wird nur die jeweils letzte Meldung, eine Spur deines Wegs entsteht dabei nicht.</li>
+              <li>Aus Fotos entfernen wir Aufnahmeort und Aufnahmezeit, bevor sie gespeichert werden.</li>
+              <li>Auf deinem Profil sind Fahrzeuge und Zahlen wie Kilometer und Höhenmeter von Anfang an sichtbar. Jede Angabe kannst du in den Einstellungen einzeln ausschalten.</li>
+              <li>Wir verkaufen keine Daten, zeigen keine Werbung und setzen keine Werbecookies. Konto, Fahrten und Fotos liegen in einem Rechenzentrum in Frankfurt (EU).</li>
+              <li>Du kannst jede Fahrt löschen oder als GPX-Datei exportieren. Löschst du dein Konto, werden alle GPS-Tracks gelöscht. Veröffentlichte Streckenzeiten bleiben ohne deinen Namen in der Bestenliste.</li>
+            </ul>
+            <p>Alles Weitere steht in der <a class="text-link" href="/legal/datenschutz">Datenschutzerklärung</a>.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Muss ich eine App herunterladen?</summary>
+          <div class="antwort">
+            <p>Nein. Strado läuft im Browser, auf dem Handy wie auf dem Computer. Wenn du Strado zum Home-Bildschirm hinzufügst, öffnet es sich wie eine normale App im Vollbild. Auf dem iPhone geht das in Safari über „Teilen“ und „Zum Home-Bildschirm“.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Warum muss der Bildschirm während der Fahrt an bleiben?</summary>
+          <div class="antwort">
+            <p>Sobald der Bildschirm ausgeht, unterbricht der Browser das GPS. Auf dem iPhone stoppt die Aufzeichnung dann ganz. Strado hält den Bildschirm deshalb während der Aufzeichnung selbst wach, sofern dein Browser das erlaubt. Eine Handyhalterung und ein Ladekabel helfen auf längeren Fahrten.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Wie komme ich in die Bestenliste?</summary>
+          <div class="antwort">
+            <p>Starte eine Strecke und fahr sie bis ans Ziel. Die Zeit läuft ab dem Startpunkt der Strecke, die Ankunft erkennt die App selbst. Nach dem Speichern stellst du die Fahrt öffentlich, erst dann erscheint deine Zeit in der Bestenliste. Die Liste lässt sich nach Fahrzeugklasse filtern.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Was, wenn ich oben am Pass kein Netz habe?</summary>
+          <div class="antwort">
+            <p>GPS braucht kein Netz, die Aufzeichnung läuft also weiter. Damit Karte und Strecke trotzdem da sind, speicherst du die Strecke vorher offline: drei Strecken gratis, mit Premium unbegrenzt. Ohne Verbindung kann der Server die Zeit allerdings nicht mitmessen. Die Fahrt wird dann nicht als <a class="text-link" href="https://app.strado.ch/verifiziert" rel="noopener">verifiziert</a> gekennzeichnet.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Geht es darum, möglichst schnell zu fahren?</summary>
+          <div class="antwort">
+            <p>Nein. Strado ist kein Wettbewerb um Geschwindigkeit. Es gelten die Verkehrsregeln, und eine Fahrt, bei der du sie missachtet hast, darfst du nicht veröffentlichen. Rennen und Fahren im Pulk sind nicht erlaubt. Musst du zwischen der Aufzeichnung und der Sicherheit anderer wählen, brich die Aufzeichnung ab. Die Regeln stehen in den <a class="text-link" href="/legal/agb">AGB</a> (Ziff. 11).</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Meine Lieblingsstrecke fehlt. Was nun?</summary>
+          <div class="antwort">
+            <p>Leg sie selbst an, das ist gratis: <a class="text-link" href="https://app.strado.ch/strecken/neu" rel="noopener">Strecke erstellen</a>. Schlägst du sie öffentlich vor, schauen wir sie uns an und schalten sie frei. Danach sehen sie alle. Eine private Strecke, die nur du siehst, ist ohne Abo ebenfalls möglich, mit Premium beliebig viele.</p>
+          </div>
+        </details>
+
+        <details class="frage">
+          <summary>Kostet Strado etwas, und wie kündige ich Premium?</summary>
+          <div class="antwort">
+            <p>Entdecken, Aufzeichnen, Ranglisten, Feed und Passstatus sind gratis. Premium ist freiwillig. Monats- und Jahresabo kündigst du jederzeit ohne Frist im Profil über das Kundenportal, Premium läuft dann bis zum Ende der bezahlten Zeit. Der Saisonpass endet nach sechs Monaten von selbst.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
