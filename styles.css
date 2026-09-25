@@ -1142,8 +1142,12 @@ section h2 {
   font-size: 0.875rem;
   margin: 0.25rem 0;
 }
-/* Polster statt Abstand: so wird jeder Link mindestens 44px hoch antippbar. */
-.footer-links a { display: inline-block; padding: 0.625rem 0.25rem; transition: color var(--duration-fast) var(--ease-standard); }
+/* Polster statt Abstand: so wird jeder Link mindestens 44px hoch antippbar.
+   Gerechnet: font-size 0.875rem = 14px, line-height 1.5 von body ergibt eine
+   Zeilenbox von 21px. 44 - 21 = 23, also mindestens 11.5px oben und unten;
+   0.75rem = 12px liegt darüber und kommt auf 45px. Mit den vorherigen
+   0.625rem (10px) waren es 41px — die Regel verfehlte ihre eigene Absicht. */
+.footer-links a { display: inline-block; padding: 0.75rem 0.25rem; transition: color var(--duration-fast) var(--ease-standard); }
 .footer-links a:hover { color: var(--color-accent); }
 
 .footer-copy { color: var(--color-muted); font-size: 0.75rem; margin: 0.25rem 0 0; }
