@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Strado · Kuratierte Fahrstrecken für Auto und Motorrad</title>
-<meta name="description" content="Kuratierte Pässe und Kurvenstrecken in der Schweiz. Zeichne deine Fahrt per GPS auf und vergleich die Zeit in der Bestenliste deines Fahrzeugs. Mit Feed, Höhenprofil, Wetter und Offline-Modus. Gratis, und eigene Strecken legst du selbst an. Von einer Schweizer Anbieterin entwickelt und betrieben.">
+<meta name="description" content="Kuratierte Pässe und Kurvenstrecken der ganzen Schweiz. Fahrt per GPS aufzeichnen und die Zeit in der Bestenliste deines Fahrzeugs vergleichen. Gratis.">
 
 <!-- Kanonische Adresse. Ohne sie ist diese Seite unter zwei Hostnamen
      gleichzeitig indexierbar: www.strado.ch und die Vercel-interne
@@ -108,7 +108,7 @@
       "@id": "https://www.strado.ch/#anbieterin",
       "name": "Strado",
       "url": "https://www.strado.ch/",
-      "logo": "https://www.strado.ch/og.png",
+      "logo": "https://www.strado.ch/apple-touch-icon.png",
       "email": "contact@strado.ch",
       "founder": { "@type": "Person", "name": "Jan Lampert" },
       "address": {
@@ -141,7 +141,7 @@
       "description": "Kuratierte P\u00e4sse und Kurvenstrecken in der Schweiz. Fahrten per GPS aufzeichnen und Zeiten in der Bestenliste des eigenen Fahrzeugs vergleichen. Mit H\u00f6henprofil, Wetter, Feed und Offline-Modus.",
       "featureList": [
         "Kuratierte Strecken erkunden",
-        "Live-Tracking mit automatischer Rundenerkennung",
+        "Live-Aufzeichnung mit automatischer Zielerkennung",
         "Bestenlisten je Strecke und Fahrzeug",
         "H\u00f6henprofil, Wetter und Live-Verkehr",
         "Feed, Kudos und Folgen",
@@ -263,14 +263,15 @@
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
 <header class="site-header">
   <div class="wrap header-inner">
     <a href="/" class="logo" aria-label="Strado, zur Startseite"><span class="signet"></span><span class="wortmarke">strado</span></a>
     <div class="header-actions">
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Seitennavigation">
         <a href="#funktionen">Funktionen</a>
-        <a href="#so-gehts">So geht's</a>
+        <a href="#so-gehts">So geht’s</a>
         <a href="#fragen">Fragen</a>
       </nav>
       <a class="btn btn-primary btn-sm" href="https://app.strado.ch/" rel="noopener">App öffnen</a>
@@ -278,7 +279,7 @@
   </div>
 </header>
 
-<main>
+<main id="inhalt">
 
   <!-- HERO -->
   <section class="hero">
@@ -431,7 +432,7 @@
 
         <div class="card feature">
           <span class="feature-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></span>
-          <h3>Live-Tracking &amp; automatische Rundenerkennung</h3>
+          <h3>Live-Aufzeichnung mit automatischer Zielerkennung</h3>
           <p>Wähl dein Fahrzeug und starte das Tracking. Strado merkt selbst, wann du am Ziel bist. Fährst du ohne Strecke los, ordnet die App bekannte Abschnitte trotzdem zu.</p>
         </div>
 
@@ -465,7 +466,7 @@
   <!-- SO GEHT'S -->
   <section class="steps" id="so-gehts">
     <div class="wrap">
-      <p class="section-label">So geht's</p>
+      <p class="section-label">So geht’s</p>
       <h2>In drei Schritten</h2>
       <ol class="step-list">
         <li class="card">
@@ -624,7 +625,7 @@
   <div class="wrap footer-inner">
     <a href="/" class="logo"><span class="wortmarke">strado</span></a>
     <p class="footer-tag">Kuratierte Fahrstrecken für Auto und Motorrad, gemacht in der Schweiz.</p>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Fusszeile">
       <a href="https://app.strado.ch/" rel="noopener">App öffnen</a>
       <a href="https://app.strado.ch/paesse" rel="noopener">Pässe</a>
       <a href="https://app.strado.ch/ranglisten" rel="noopener">Ranglisten</a>
@@ -634,8 +635,8 @@
       <a href="/legal/impressum">Impressum</a>
       <a href="/legal/datenschutz">Datenschutz</a>
       <a href="/legal/agb">AGB</a>
-    </div>
-    <p class="footer-copy">© <span id="year"></span> Strado. Fahr nur so schnell, wie es sicher und erlaubt ist.</p>
+    </nav>
+    <p class="footer-copy">© <span id="year">2026</span> Strado. Fahr nur so schnell, wie es sicher und erlaubt ist.</p>
   </div>
 </footer>
 
