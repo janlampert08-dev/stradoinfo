@@ -131,7 +131,9 @@
         selbst bestimmt wird, was auf dem öffentlichen Profil erscheint
         (Profilbild, Fahrzeuge, Anzahl Pässe, Höhenmeter, Distanz,
         Follower-Liste), und die Einstellung <strong>„Neue Follower
-        bestätigen"</strong> (Ziff. 3.6).
+        bestätigen"</strong> (Ziff. 3.6). Ob ein Konto neue Follower
+        bestätigt, ist für angemeldete Nutzende erkennbar (der Knopf lautet
+        dann „Folgen anfragen").
       </p>
       <div class="legal-note">
         <p><strong>Zu den Standardeinstellungen:</strong> Bei neu angelegten
@@ -197,7 +199,9 @@
         öffentlich, wenn dies pro Fahrt aktiv gewählt wird; die Einstellung ist
         jederzeit änderbar. In Bestenlisten, in den Streckenfotos und in der
         Anzahl befahrener Pässe erscheinen nur öffentliche Fahrten, nie
-        Follower-Fahrten. Der
+        Follower-Fahrten. Automatisch erkannte Streckenabschnitte einer freien
+        Fahrt sind privat oder öffentlich und folgen der Fahrt; eine
+        Follower-Stufe gibt es für sie nicht. Der
         <strong>vollständige GPS-Track ist ausschliesslich für die eigene Person
         sichtbar</strong> — die Zugriffsregeln der Datenbank (Row Level Security)
         lassen keinen anderen Zugriff zu.
@@ -277,9 +281,10 @@
         zugehörige Fahrt sehen darf — weil sie öffentlich ist, weil sie für
         Follower geteilt ist und die Person dem Konto folgt, oder weil sie die
         Fahrt selbst gefahren ist. Ein weitergegebener Link funktioniert
-        deshalb nicht dauerhaft, und ein Foto einer wieder auf privat
-        gestellten Fahrt ist nicht mehr abrufbar; dasselbe gilt für eine
-        Follower-Fahrt, sobald jemand nicht mehr folgt.
+        deshalb nicht dauerhaft: ein ausgestellter Link gilt höchstens eine
+        Stunde. Wird eine Fahrt wieder auf privat gestellt — oder folgt jemand
+        einem Konto nicht mehr —, erhält diese Person keine neuen Links; ein
+        bereits ausgestellter bleibt bis zu seinem Ablauf gültig.
       </p>
       <div class="legal-note">
         <p><strong>Hinweis zu Profilbildern:</strong> Profilbilder liegen
@@ -316,18 +321,20 @@
           wird. Gespeichert wird, wer wem wann eine Anfrage gestellt hat;
           sichtbar ist das nur den beiden Beteiligten. Eine Anfrage wird beim
           Annehmen zum Follow und beim Ablehnen oder Zurückziehen gelöscht.
-          Wird die Einstellung ausgeschaltet, werden offene Anfragen
-          angenommen. Bestehende Follows bleiben beim Einschalten
-          unberührt.</li>
+          Wird die Einstellung ausgeschaltet, bleiben offene Anfragen bestehen
+          und werden einzeln beantwortet. Bestehende Follows bleiben beim
+          Einschalten unberührt; Follower lassen sich in der eigenen
+          Follower-Liste jederzeit <strong>entfernen</strong>.</li>
         <li><strong>Favoriten</strong> (gemerkte Strecken) — nur für die eigene
           Person sichtbar.</li>
-        <li><strong>Bestenlisten und Statistiken</strong>, die aus öffentlich
-          gestellten Fahrten berechnet werden; Follower-Fahrten fliessen nicht
-          ein.</li>
-        <li><strong>Feed und Aktivitätsliste</strong>, in denen Fahrten,
-          erhaltene Kudos, neue Follower und offene Folgeanfragen erscheinen.
-          Follower-Fahrten erscheinen im Feed nur bei Personen, die dem Konto
-          folgen.</li>
+        <li><strong>Bestenlisten, Streckenstatistiken und die Anzahl befahrener
+          Pässe</strong>, die nur aus öffentlichen Fahrten berechnet werden. Die
+          Profilsummen (Höhenmeter, Distanz) enthalten für Follower auch
+          Follower-Fahrten.</li>
+        <li><strong>Feed und Aktivitätsliste</strong>: im Feed erscheinen
+          Fahrten — Follower-Fahrten nur bei Personen, die dem Konto folgen —,
+          in der Aktivitätsliste erhaltene Kudos, neue Follower und offene
+          Folgeanfragen.</li>
       </ul>
 
       <h3>3.7 Streckenvorschläge</h3>
@@ -586,9 +593,10 @@
         wie eine öffentliche Fahrt — für Personen, die dem Konto folgen. Weil
         Folgen standardmässig eine Bestätigung verlangt (Ziff. 3.6), sind das
         Personen, deren Anfrage angenommen wurde, sowie Follower, die schon vor
-        Einführung der Bestätigung gefolgt sind. Wird eine solche Fahrt
-        gemeldet, sehen die Moderatorinnen und Moderatoren ihre Angaben,
-        solange die Meldung offen ist.
+        Einführung der Bestätigung gefolgt sind (sie lassen sich entfernen).
+        Wird eine solche Fahrt gemeldet, sehen die Moderatorinnen und
+        Moderatoren, solange die Meldung offen ist, Titel, Startort, Strecke
+        und Notiz und können die Fahrt verbergen.
       </p>
       <p>
         <strong>Voreingestellt sichtbar, bis es abgeschaltet wird (Standard:
@@ -601,7 +609,8 @@
       <p>
         <strong>Nie für andere sichtbar:</strong> der vollständige, ungekappte
         GPS-Track; private Fahrten und ihre Notizen; Follower-Fahrten für alle,
-        die nicht folgen; Folgeanfragen (ausser für die beiden Beteiligten);
+        die nicht folgen (ausser für die Moderation bei offener Meldung);
+        Folgeanfragen (ausser für die beiden Beteiligten);
         Favoriten; E-Mail-Adresse; Zahlungsangaben; abgegebene Meldungen.
       </p>
       <div class="legal-note">
@@ -711,7 +720,8 @@
         Fahrzeuge löschen, eigene abgelehnte Streckenvorschläge löschen,
         Profilangaben und Sichtbarkeitsschalter ändern, den Privatzonen-Radius
         anpassen (was bereits geteilte Fahrten neu zuschneidet), gestellte
-        Folgeanfragen zurückziehen und erhaltene ablehnen.
+        Folgeanfragen zurückziehen, erhaltene ablehnen und Follower
+        entfernen.
       </p>
       <p><strong>9.3 Feste Fristen.</strong></p>
       <div class="legal-table-wrap">
