@@ -386,7 +386,11 @@ Was drin steht und warum:
 - `script-src 'self' 'unsafe-inline'` — die Seite traegt vier Inline-Skripte
   (Vercel-Insights-Shim, Vorzeigestrecke, Kopfzeilenhoehe, Jahreszahl).
   `'unsafe-eval'` braucht sie nicht und bekommt es nicht.
-- `style-src` und `font-src` — Google Fonts (Inter, IBM Plex Mono).
+- `style-src 'self'` und `font-src 'self'` — nur eigene Dateien. Die Schriften
+  (Geist, Familjen Grotesk) liegen unter `/fonts` im Repo, nicht bei Google
+  Fonts; so geht keine Besucher-IP an Google. `/fonts/*` wird ein Jahr lang
+  `immutable` gecacht, eine neue Fassung braucht deshalb einen neuen
+  Dateinamen (`-v2`).
   Ausdruecklich **ohne** `'unsafe-inline'`: die Seite hat weder `<style>`-
   Bloecke noch `style="…"`-Attribute. Das Skript fuer `--header-h` setzt die
   Variable per CSSOM, und das faellt nicht unter `style-src`.

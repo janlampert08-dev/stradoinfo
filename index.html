@@ -69,12 +69,15 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Inter und IBM Plex Mono, dieselben zwei Schriften wie die App
-     (app/layout.tsx). Eine dritte kommt auch hier nicht dazu: die Wortmarke
+<!-- Geist fuer Text und Zahlen, Familjen Grotesk fuer Seitentitel: die
+     Schriften der App (app/layout.tsx) ohne IBM Plex Mono, die dort nur
+     noch Code setzt. Beide liegen auf strado.ch selbst (/fonts, @font-face
+     in styles.css), damit kein Aufruf dieser Seite bei Google Fonts landet.
+     Vorgeladen wird nur die latin-Teilmenge: sie traegt Fliesstext und den
+     Hero-Titel; latin-ext holt der Browser nur bei Bedarf. Die Wortmarke
      ist eine Kontur, keine gesetzte Schrift. -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/geist-latin-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/familjen-grotesk-latin-v1.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <!-- Strukturierte Daten. Bis hierher hatte die Infoseite keine — die App
      dagegen schon (TouristTrip je Strecke, app/strecken/[id]/page.tsx).
@@ -665,7 +668,7 @@
      faehrt als erlaubt; die Fusszeile bittet genau darum.
 
      Das Skript steht hier unten und nicht neben der Karte: ein Inline-Skript
-     wartet auf jedes noch offene Stylesheet — hier das der Google-Fonts —
+     wartet auf jedes noch offene Stylesheet — hier styles.css —
      und haelt solange das Parsen von allem darunter auf. Am Seitenende ist
      nichts mehr da, was es aufhalten koennte. -->
 <script>
